@@ -1,0 +1,5 @@
+export const ACTION_TYPES = {
+    ADD_BOOK: 'ADD_BOOK',
+    UPDATE_BOOK: 'UPDATE_BOOK',
+    SET_BOOKS: 'SET_BOOKS',
+};
