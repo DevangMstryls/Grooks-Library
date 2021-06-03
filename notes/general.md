@@ -5,8 +5,8 @@
 
 ##### SETUP
 - [x] Add eslint
-- [ ] Setup Redux store (redux, react-redux)
-- [ ] Setup client side routing (react-router)
+- [x] Setup Redux store (redux, react-redux)
+- [x] Setup client side routing (react-router)
 - [ ] Setup React Hook Form (hook form)
 - [ ] Setup styles (sass) 
 
