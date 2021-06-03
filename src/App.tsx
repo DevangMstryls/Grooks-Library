@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 import BooksList from "./components/books/BooksList";
 import AddUpdateBook from "./components/books/AddUpdateBook";
