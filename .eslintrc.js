@@ -29,7 +29,9 @@ module.exports = {
     ],
     'rules': {
         'prettier/prettier': 'off', // Turn off normal prettier
-        'indent': ['error', 4,],
+        'indent': ['error', 4, {
+            'SwitchCase': 1,
+        }],
         'linebreak-style': ['error', 'unix',],
         'quotes': 'off',
         'semi': ['error', 'always',],

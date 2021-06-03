@@ -5,11 +5,12 @@ import {ACTION_TYPES} from "../core/constants";
 
 
 export function booksReducer(state = INITIAL_STATE.books, action: Action): BooksState {
-    const {type, payload} = action;
+    const {type} = action;
 
     switch (type) {
-        case ACTION_TYPES.ADD_BOOK:
+        case ACTION_TYPES.ADD_BOOK: {
             return state;
+        }
     }
 
     return state;
