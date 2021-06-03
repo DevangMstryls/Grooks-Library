@@ -8,7 +8,7 @@
 - [x] Setup Redux store (redux, react-redux)
 - [x] Setup client side routing (react-router)
 - [ ] Setup React Hook Form (hook form)
-- [ ] Setup styles (sass) 
+- [x] Setup styles (sass) 
 
 
 ##### Project

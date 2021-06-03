@@ -1,0 +1,45 @@
+/**
+  Add any application specific variables.
+ */
+
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+$bp-xxl: 1400px;
+
+$color-primary: #53a318;
+$color-accent: #53a318;
+$color-accent-dark: darken(#53a318, 10);
+
+$color-black: #2f2f2f;
+$color-white: white;
+$color-light-gray-1: #E0E0E0;
+$color-whitesmoke: whitesmoke;
+$color-whitesmoke-2: #f7f7f7;
+$color-whitesmoke-3: #e7e7e7;
+$color-transparent: transparent;
+$color-dark-gray-1: #bdbdbd;
+$color-dark-gray-2: #828282;
+$color-dark-gray-3: #333333;
+$color-dark-gray-4: #323232;
+$color-dark-gray-5: #c4c4c4;
+$color-error: #FE4E41;
+
+$transition-basic: all 300ms ease-in-out;
+
+$font-Inter: 'Inter', sans-serif;
+
+$primary-font: $font-Inter;
+//$secondary-font: $font-Inter;
+
+//$primary-font-wt-thin: 100;
+//$primary-font-wt-light: 300;
+$primary-font-wt-regular: 400;
+$primary-font-wt-medium: 500;
+$primary-font-wt-semi_bold: 600;
+$primary-font-wt-bold: 700;
+//$primary-font-wt-black: 900;
+
+$page-spacing: 20px;
+$page-spacing-desktop: 32px;

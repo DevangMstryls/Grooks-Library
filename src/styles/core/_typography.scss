@@ -1,0 +1,119 @@
+@import "./variables";
+@import "./mixins";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+// @ref: Fluid Typography https://css-tricks.com/snippets/css/fluid-typography/
+
+$min_width: 320px;
+$max_width: 1200px;
+
+// headers
+
+
+h1, .h1 {
+  font-family: $font-Inter;
+  font-weight: $primary-font-wt-bold;
+  line-height: 150%;
+  @include fluid-type($min_width, $max_width, 25px, 45px);
+}
+
+h2, .h2 {
+  font-family: $font-Inter;
+  font-weight: $primary-font-wt-semi_bold;
+  line-height: 150%;
+  @include fluid-type($min_width, $max_width, 18px, 32px);
+}
+
+h3, .h3 {
+  font-family: $font-Inter;
+  font-weight: $primary-font-wt-bold;
+  line-height: 150%;
+  @include fluid-type($min_width, $max_width, 28px, 48px);
+}
+
+h4, .h4 {
+  font-family: $font-Inter;
+  font-weight: $primary-font-wt-semi_bold;
+  line-height: 150%;
+  @include fluid-type($min_width, $max_width, 20px, 36px);
+}
+
+h5, .h5 {
+  font-family: $font-Inter;
+  font-weight: $primary-font-wt-semi_bold;
+  line-height: 150%;
+  @include fluid-type($min_width, $max_width, 14px, 20px);
+}
+
+h6, .h6 {
+  font-family: $font-Inter;
+  font-weight: $primary-font-wt-semi_bold;
+  line-height: 150%;
+  @include fluid-type($min_width, $max_width, 13px, 18px);
+}
+
+
+// paragraphs
+
+.p1 {
+  font-family: $font-Inter;
+  font-weight: $primary-font-wt-regular;
+  line-height: 150%;
+  @include fluid-type($min_width, $max_width, 20px, 30px);
+}
+
+.p2 {
+  font-family: $font-Inter;
+  font-weight: $primary-font-wt-medium;
+  line-height: 150%;
+  @include fluid-type($min_width, $max_width, 18px, 22px);
+}
+
+.p3 {
+  font-family: $font-Inter;
+  font-weight: $primary-font-wt-medium;
+  line-height: 150%;
+  @include fluid-type($min_width, $max_width, 16px, 20px);
+}
+
+.p4 {
+  font-family: $font-Inter;
+  font-weight: $primary-font-wt-regular;
+  line-height: 150%;
+  @include fluid-type($min_width, $max_width, 14px, 18px);
+}
+
+.p5, body, p, ul, li {
+  font-family: $font-Inter;
+  font-weight: $primary-font-wt-regular;
+  line-height: 180%;
+  @include fluid-type($min_width, $max_width, 15px, 15px);
+}
+
+.p6 {
+  font-family: $font-Inter;
+  font-weight: $primary-font-wt-medium;
+  line-height: 150%;
+  @include fluid-type($min_width, $max_width, 14px, 16px);
+}
+
+.p7 {
+  font-family: $font-Inter;
+  font-weight: $primary-font-wt-regular;
+  line-height: 150%;
+  @include fluid-type($min_width, $max_width, 13px, 15px);
+}
+
+.p8 {
+  font-family: $font-Inter;
+  font-weight: $primary-font-wt-regular;
+  line-height: 150%;
+  @include fluid-type($min_width, $max_width, 11px, 13px);
+}
+
+.p9 {
+  font-size: $font-Inter;
+  font-weight: $primary-font-wt-medium;
+  line-height: 150%;
+  @include fluid-type($min_width, $max_width, 13px, 16px);
+}

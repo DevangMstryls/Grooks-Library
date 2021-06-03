@@ -1,0 +1,22 @@
+@import "variables";
+
+body {
+  color: $color-black;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: $color-accent;
+
+  &:hover {
+    color: $color-accent-dark;
+  }
+}
+
+input[type="text"], textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
