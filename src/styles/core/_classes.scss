@@ -1,0 +1,15 @@
+//@import "variables";
+
+.m {
+  &-0 {
+    margin: 0;
+  }
+}
+
+.txt {
+  &-clr {
+    &-error {
+      color: $color-error;
+    }
+  }
+}

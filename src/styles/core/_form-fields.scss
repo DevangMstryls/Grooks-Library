@@ -1,0 +1,24 @@
+input, textarea {
+  @extend .p5;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 12px 13px;
+  outline: none;
+  &:focus {
+    border-color: $color-accent;
+  }
+}
+
+
+.form-field {
+  &.has-error {
+    label {
+      color: $color-error;
+    }
+    input, textarea {
+      &, &:focus {
+        border-color: $color-error;
+      }
+    }
+  }
+}
