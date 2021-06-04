@@ -4,6 +4,7 @@ export type Action = {
 };
 
 export type Book = {
+    id: string,
     name: string,
     description: string,
     author: string,

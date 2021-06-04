@@ -1,6 +1,7 @@
 export const ACTION_TYPES = {
     ADD_BOOK: 'ADD_BOOK',
     UPDATE_BOOK: 'UPDATE_BOOK',
+    DELETE_BOOK: 'DELETE_BOOK',
     SET_BOOKS: 'SET_BOOKS',
 };
 
@@ -22,4 +23,8 @@ export const MSGS: {[field: string]: any} = {
         required: 'Required',
         min: 'Minimum available stock should be more than or equal 0',
     },
+};
+
+export const LOCALSTORAGE_KEYS = {
+    books: 'books',
 };
