@@ -12,20 +12,7 @@ function App() {
             <header className="App-header">Grooks Library</header>
             <div>
                 <Router>
-                    <ul>
-                        <li>
-                            <Link to="/">Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/add">Add Book</Link>
-                        </li>
-                        <li>
-                            <Link to="/edit/1">Edit Book</Link>
-                        </li>
-                        <li>
-                            <Link to="/book/1">Book Detail</Link>
-                        </li>
-                    </ul>
+                    <Link to="/add">Add Book</Link>
 
                     <Switch>
                         <Route path="/add">

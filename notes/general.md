@@ -20,9 +20,9 @@
         - Publisher (text input)
         - Available Stock (number input)
 - [x] Make the add/update book functionality
-- [ ] Make the List book page
-- [ ] Make the book card
-- [ ] Make the book detail page
+- [x] Make the List book page
+- [x] Make the book card
+- [x] Make the book detail page
 - [ ] Make the search book functionality
     Available Filters:
     - [ ] Generic text search through Title, Description, Author, Publisher (text input)

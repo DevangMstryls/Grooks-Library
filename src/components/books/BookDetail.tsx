@@ -2,6 +2,8 @@ import React from "react";
 import {APP_STATE, BooksState} from "../../core/types/stateTypes";
 import {connect} from "react-redux";
 import {useParams} from "react-router";
+import {Link} from "react-router-dom";
+
 
 const mapStateToProps = (state: APP_STATE) => {
     return {
@@ -32,6 +34,7 @@ const BookDetail = (props: Props) => {
 
     return (
         <div>
+            <Link to={'/'}>&lt; Back</Link>
             <h1 className={'p1'}>{book.name}</h1>
             <p>{book.description}</p>
             <p>{book.author}</p>
