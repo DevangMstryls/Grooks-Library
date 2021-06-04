@@ -3,3 +3,23 @@ export const ACTION_TYPES = {
     UPDATE_BOOK: 'UPDATE_BOOK',
     SET_BOOKS: 'SET_BOOKS',
 };
+
+export const MSGS: {[field: string]: any} = {
+    name: {
+        required: 'Required',
+        minLength: 'Min Length is 2',
+    },
+    description: {
+        required: 'Required',
+    },
+    author: {
+        required: 'Required',
+    },
+    publisher: {
+        required: 'Required',
+    },
+    availableStock: {
+        required: 'Required',
+        min: 'Minimum available stock should be more than or equal 0',
+    },
+};

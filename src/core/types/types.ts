@@ -8,6 +8,6 @@ export type Book = {
     description: string,
     author: string,
     publisher: string,
-    added_on: string,
+    addedOn: string,
     availableStock: number,
 };
