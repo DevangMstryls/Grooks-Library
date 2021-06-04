@@ -1,12 +1,13 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {APP_STATE, BooksState} from "../../core/types/stateTypes";
 import {useLocation, useParams} from "react-router";
 import {FieldError, useForm} from "react-hook-form";
-import {MSGS} from "../../core/constants";
+import {ACTION_TYPES, MSGS} from "../../core/constants";
 import TextField from "../form/TextField";
 import TextareaField from "../form/TextareaField";
 import NumberField from "../form/NumberField";
+import {Book} from "../../core/types/types";
 
 
 const mapStateToProps = (state: APP_STATE) => {
@@ -27,14 +28,6 @@ const formFields = {
     availableStock: 'availableStock',
 };
 
-const initialValues = {
-    [formFields.name]: 'Hooked',
-    [formFields.description]: '',
-    [formFields.author]: '',
-    [formFields.publisher]: '',
-    [formFields.availableStock]: '',
-};
-
 const getErrorMessage = (e: FieldError | undefined): string => {
     if (!e) return '';
 
@@ -53,13 +46,22 @@ const AddUpdateBook = (props: AddUpdateBookProps) => {
 
     const params: any = useParams();
     const location = useLocation();
+    const [waitForAddUpdate, setWaitForAddUpdate] = useState(false);
 
     const {
         books,
-        // dispatch,
+        dispatch,
     } = props;
 
     const book = books.data[params.id] || null;
+
+    const initialValues = {
+        [formFields.name]: book?.name || '',
+        [formFields.description]: book?.description || '',
+        [formFields.author]: book?.author || '',
+        [formFields.publisher]: book?.publisher || '',
+        [formFields.availableStock]: book?.availableStock || '',
+    };
 
     let mode = '';
     if (location.pathname.includes('/add'))
@@ -78,6 +80,32 @@ const AddUpdateBook = (props: AddUpdateBookProps) => {
 
     const onSubmit = (data: any) => {
         // TODO: set field as touched
+        setWaitForAddUpdate(true);
+        if (mode === 'add') {
+            const bookToAdd: Book = {
+                ...data,
+                addedOn: new Date().toISOString(),
+                id: Math.floor(Math.random() * 1000),
+            };
+
+            dispatch({
+                type: ACTION_TYPES.ADD_BOOK,
+                payload: bookToAdd,
+            });
+            setWaitForAddUpdate(false);
+        }
+        else if (mode === 'edit') {
+            const bookToUpdate: Book = {
+                ...data,
+                id: book.id,
+            };
+
+            dispatch({
+                type: ACTION_TYPES.UPDATE_BOOK,
+                payload: bookToUpdate,
+            });
+            setWaitForAddUpdate(false);
+        }
     };
 
     const getBook = () => {
@@ -91,6 +119,12 @@ const AddUpdateBook = (props: AddUpdateBookProps) => {
             getBook();
         }
     }, []);
+
+    if (mode === 'edit' && !book) {
+        return (
+            <p>Book not found</p>
+        );
+    }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -167,7 +201,11 @@ const AddUpdateBook = (props: AddUpdateBookProps) => {
             />
 
             <div>
-                <button type="submit">{mode === 'edit' ? 'Update' : 'Add'}</button>
+                <button type="submit">{
+                    mode === 'edit'
+                        ? (waitForAddUpdate ? 'Updating book...' : 'Update Book')
+                        : (waitForAddUpdate ? 'Adding book...' : 'Add Book')
+                }</button>
             </div>
         </form>
     );
