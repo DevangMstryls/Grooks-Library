@@ -1,5 +1,9 @@
+import {Book} from "./types";
+
 export type BooksState = {
-    data: {},
+    data: {
+        [bookId: string]: Book,
+    },
 };
 
 export type APP_STATE = {
