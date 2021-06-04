@@ -16,7 +16,7 @@ const mapStateToProps = (state: APP_STATE) => {
     };
 };
 
-type AddUpdateBookProps = {
+type Props = {
     books: BooksState,
 } & any
 
@@ -42,7 +42,7 @@ const getErrorMessage = (e: FieldError | undefined): string => {
     return '';
 };
 
-const AddUpdateBook = (props: AddUpdateBookProps) => {
+const AddUpdateBook = (props: Props) => {
 
     const params: any = useParams();
     const location = useLocation();

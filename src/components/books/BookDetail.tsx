@@ -1,10 +1,45 @@
 import React from "react";
+import {APP_STATE, BooksState} from "../../core/types/stateTypes";
+import {connect} from "react-redux";
+import {useParams} from "react-router";
 
+const mapStateToProps = (state: APP_STATE) => {
+    return {
+        books: state.books,
+    };
+};
 
-const BookDetail = () => {
+type Props = {
+    books: BooksState,
+} & any
+
+const BookDetail = (props: Props) => {
+
+    const params: any = useParams();
+
+    const {
+        books,
+        // dispatch,
+    } = props;
+
+    const book = books.data[params.id] || null;
+
+    if (!book) {
+        return (
+            <p>Book not found</p>
+        );
+    }
+
     return (
-        <div>Book Detail</div>
+        <div>
+            <h1 className={'p1'}>{book.name}</h1>
+            <p>{book.description}</p>
+            <p>{book.author}</p>
+            <p>{book.publisher}</p>
+            <p>{book.addedOn}</p>
+            <p>{book.availableStock}</p>
+        </div>
     );
 };
 
-export default BookDetail;
+export default connect(mapStateToProps)(BookDetail);
