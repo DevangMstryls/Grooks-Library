@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {connect} from "react-redux";
 import {APP_STATE, BooksState} from "../../core/types/stateTypes";
 import {useLocation, useParams} from "react-router";
@@ -88,11 +88,13 @@ const AddUpdateBook = (props: AddUpdateBookProps) => {
                 id: Math.floor(Math.random() * 1000),
             };
 
-            dispatch({
-                type: ACTION_TYPES.ADD_BOOK,
-                payload: bookToAdd,
-            });
-            setWaitForAddUpdate(false);
+            setTimeout(() => {
+                dispatch({
+                    type: ACTION_TYPES.ADD_BOOK,
+                    payload: bookToAdd,
+                });
+                setWaitForAddUpdate(false);
+            }, 1000);
         }
         else if (mode === 'edit') {
             const bookToUpdate: Book = {
@@ -100,25 +102,15 @@ const AddUpdateBook = (props: AddUpdateBookProps) => {
                 id: book.id,
             };
 
-            dispatch({
-                type: ACTION_TYPES.UPDATE_BOOK,
-                payload: bookToUpdate,
-            });
-            setWaitForAddUpdate(false);
+            setTimeout(() => {
+                dispatch({
+                    type: ACTION_TYPES.UPDATE_BOOK,
+                    payload: bookToUpdate,
+                });
+                setWaitForAddUpdate(false);
+            }, 1000);
         }
     };
-
-    const getBook = () => {
-        // TODO: fetch book
-    };
-
-    // EFFECTS
-
-    useEffect(() => {
-        if (mode === 'edit' && !book) {
-            getBook();
-        }
-    }, []);
 
     if (mode === 'edit' && !book) {
         return (
@@ -201,11 +193,14 @@ const AddUpdateBook = (props: AddUpdateBookProps) => {
             />
 
             <div>
-                <button type="submit">{
-                    mode === 'edit'
-                        ? (waitForAddUpdate ? 'Updating book...' : 'Update Book')
-                        : (waitForAddUpdate ? 'Adding book...' : 'Add Book')
-                }</button>
+                <button
+                    disabled={waitForAddUpdate}
+                    type="submit">
+                    {
+                        mode === 'edit'
+                            ? (waitForAddUpdate ? 'Updating book...' : 'Update Book')
+                            : (waitForAddUpdate ? 'Adding book...' : 'Add Book')
+                    }</button>
             </div>
         </form>
     );
