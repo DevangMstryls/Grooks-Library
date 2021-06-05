@@ -4,6 +4,7 @@ input, textarea {
   border: none;
   border-radius: 10px;
   padding: 16px;
+  width: 100%;
   background-color: $color-light-gray-1;
 
   &:focus {
@@ -11,6 +12,10 @@ input, textarea {
   }
 }
 
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
 
 .form-field {
   label {
@@ -21,6 +26,10 @@ input, textarea {
   .error-wrpr {
     min-height: 20px;
     margin-top: 5px;
+
+    p {
+      text-align: right;
+    }
   }
 
   &.has-error {
@@ -40,6 +49,34 @@ input, textarea {
       &::placeholder {
         color: $color-light-red-3;
       }
+    }
+  }
+}
+
+button {
+  @extend .p5;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: $color-light-gray-2;
+  color: $color-black;
+
+  &:hover {
+    background-color: $color-light-gray-3;
+  }
+
+  &[disabled] {
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  &.btn-accent {
+    background-color: $color-accent;
+    color: $color-white;
+
+    &:hover {
+      background-color: $color-accent-dark;
     }
   }
 }

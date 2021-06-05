@@ -23,6 +23,12 @@
   }
 }
 
+.w {
+  &-100pc {
+    width: 100%;
+  }
+}
+
 .pos {
   &-abs {
     position: absolute;
@@ -30,4 +36,84 @@
   &-rel {
     position: relative;
   }
+}
+
+.v-al-mdl {
+  vertical-align: middle;
+}
+
+.d {
+  &-flex {
+    display: flex;
+  }
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-flow: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-flow: column;
+}
+
+.flex-row-wrap {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.flex-justify-start {
+  justify-content: flex-start;
+}
+
+.flex-justify-end {
+  justify-content: flex-end;
+}
+
+.flex-space-between {
+  justify-content: space-between;
+}
+
+.flex-align-center {
+  align-items: center;
+}
+
+.flex-align-flex-end {
+  align-items: flex-end;
+}
+
+.flex-align-self-start {
+  align-self: start;
+}
+
+.flex-align-self-stretch {
+  align-self: stretch;
+}
+
+.flex-justify-start {
+  justify-content: start;
+}
+
+.flex-justify-center {
+  justify-content: center;
+}
+
+.flex-justify-flex-end {
+  justify-content: flex-end;
+}
+
+.flex-wrap-wrap {
+  flex-wrap: wrap;
+}
+
+
+.trans {
+  transition: all 300ms ease-in-out;
 }
