@@ -1,0 +1,22 @@
+@import "./../../styles/core/mixins";
+@import "./../../styles/core/variables";
+
+.book-card {
+  background: $color-white;
+  border-radius: 4px;
+  padding: 20px;
+  box-shadow: 0 0 10px 10px $color-transparent-light-gray;
+  cursor: pointer;
+}
+
+.book-cover {
+  margin-right: 20px;
+  width: 30%;
+  border-radius: 3px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    max-width: 150px;
+  }
+}
