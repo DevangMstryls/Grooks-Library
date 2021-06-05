@@ -110,3 +110,15 @@ h6, .h6 {
   line-height: 150%;
   @include fluid-type($min_width, $max_width, 11px, 13px);
 }
+
+
+a {
+  color: $color-accent;
+  text-decoration: none;
+  outline: none;
+
+  &:hover, &:focus {
+    color: $color-accent-dark;
+    border-bottom: 1px solid $color-accent-dark;
+  }
+}

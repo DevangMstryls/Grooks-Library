@@ -1,3 +1,9 @@
+input[type="text"], textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 input, textarea {
   @extend .p5;
   outline: none;
@@ -61,8 +67,9 @@ button {
   cursor: pointer;
   background-color: $color-light-gray-2;
   color: $color-black;
+  outline: none;
 
-  &:hover {
+  &:hover, &:focus {
     background-color: $color-light-gray-3;
   }
 
@@ -75,7 +82,7 @@ button {
     background-color: $color-accent;
     color: $color-white;
 
-    &:hover {
+    &:hover, &:focus {
       background-color: $color-accent-dark;
     }
   }
