@@ -119,90 +119,92 @@ const AddUpdateBook = (props: Props) => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            {/* name */}
-            <TextField
-                label={'Book Name'}
-                placeholder={'To kill a mocking bird'}
-                name={formFields.name}
-                defaultValue={initialValues[formFields.name]}
-                touched={touchedFields[formFields.name]}
-                error={getErrorMessage(errors[formFields.name])}
-                register={register}
-                rules={{
-                    required: true,
-                }}
-            />
+        <div className={'m-x-auto mxw-600'}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                {/* name */}
+                <TextField
+                    label={'Book Name'}
+                    placeholder={'To kill a mocking bird'}
+                    name={formFields.name}
+                    defaultValue={initialValues[formFields.name]}
+                    touched={touchedFields[formFields.name]}
+                    error={getErrorMessage(errors[formFields.name])}
+                    register={register}
+                    rules={{
+                        required: true,
+                    }}
+                />
 
-            {/* description */}
-            <TextareaField
-                label={'Description'}
-                placeholder={'A brief about the book'}
-                name={formFields.description}
-                defaultValue={initialValues[formFields.description]}
-                touched={touchedFields[formFields.description]}
-                error={getErrorMessage(errors[formFields.description])}
-                register={register}
-                rules={{
-                    required: true,
-                }}
-            />
+                {/* description */}
+                <TextareaField
+                    label={'Description'}
+                    placeholder={'A brief about the book'}
+                    name={formFields.description}
+                    defaultValue={initialValues[formFields.description]}
+                    touched={touchedFields[formFields.description]}
+                    error={getErrorMessage(errors[formFields.description])}
+                    register={register}
+                    rules={{
+                        required: true,
+                    }}
+                />
 
-            {/* author */}
-            <TextField
-                label={'Author'}
-                placeholder={'J. K. Rowling'}
-                name={formFields.author}
-                defaultValue={initialValues[formFields.author]}
-                touched={touchedFields[formFields.author]}
-                error={getErrorMessage(errors[formFields.author])}
-                register={register}
-                rules={{
-                    required: true,
-                }}
-            />
+                {/* author */}
+                <TextField
+                    label={'Author'}
+                    placeholder={'J. K. Rowling'}
+                    name={formFields.author}
+                    defaultValue={initialValues[formFields.author]}
+                    touched={touchedFields[formFields.author]}
+                    error={getErrorMessage(errors[formFields.author])}
+                    register={register}
+                    rules={{
+                        required: true,
+                    }}
+                />
 
-            {/* publisher */}
-            <TextField
-                label={'Publisher'}
-                placeholder={'Rupa Publications'}
-                name={formFields.publisher}
-                defaultValue={initialValues[formFields.publisher]}
-                touched={touchedFields[formFields.publisher]}
-                error={getErrorMessage(errors[formFields.publisher])}
-                register={register}
-                rules={{
-                    required: true,
-                }}
-            />
+                {/* publisher */}
+                <TextField
+                    label={'Publisher'}
+                    placeholder={'Rupa Publications'}
+                    name={formFields.publisher}
+                    defaultValue={initialValues[formFields.publisher]}
+                    touched={touchedFields[formFields.publisher]}
+                    error={getErrorMessage(errors[formFields.publisher])}
+                    register={register}
+                    rules={{
+                        required: true,
+                    }}
+                />
 
-            {/* available stock */}
-            <NumberField
-                label={'Available Stock'}
-                placeholder={'1000'}
-                name={formFields.availableStock}
-                defaultValue={initialValues[formFields.availableStock]}
-                touched={touchedFields[formFields.availableStock]}
-                error={getErrorMessage(errors[formFields.availableStock])}
-                register={register}
-                rules={{
-                    required: true,
-                    valueAsNumber: true,
-                    min: 0,
-                }}
-            />
+                {/* available stock */}
+                <NumberField
+                    label={'Available Stock'}
+                    placeholder={'1000'}
+                    name={formFields.availableStock}
+                    defaultValue={initialValues[formFields.availableStock]}
+                    touched={touchedFields[formFields.availableStock]}
+                    error={getErrorMessage(errors[formFields.availableStock])}
+                    register={register}
+                    rules={{
+                        required: true,
+                        valueAsNumber: true,
+                        min: 0,
+                    }}
+                />
 
-            <div>
-                <button
-                    disabled={waitForAddUpdate}
-                    type="submit">
-                    {
-                        mode === 'edit'
-                            ? (waitForAddUpdate ? 'Updating book...' : 'Update Book')
-                            : (waitForAddUpdate ? 'Adding book...' : 'Add Book')
-                    }</button>
-            </div>
-        </form>
+                <div>
+                    <button
+                        disabled={waitForAddUpdate}
+                        type="submit">
+                        {
+                            mode === 'edit'
+                                ? (waitForAddUpdate ? 'Updating book...' : 'Update Book')
+                                : (waitForAddUpdate ? 'Adding book...' : 'Add Book')
+                        }</button>
+                </div>
+            </form>
+        </div>
     );
 };
 

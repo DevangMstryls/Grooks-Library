@@ -33,7 +33,7 @@ const BookDetail = (props: Props) => {
     }
 
     return (
-        <div>
+        <div className={'m-x-auto mxw-600'}>
             <Link to={'/'}>&lt; Back</Link>
             <h1 className={'p1'}>{book.name}</h1>
             <p>{book.description}</p>

@@ -63,7 +63,7 @@ const BooksList = (props: Props) => {
     }, [searchTerm]);
 
     return (
-        <div>
+        <div className={'m-x-auto mxw-600'}>
             <div>
                 <input
                     type="search"
