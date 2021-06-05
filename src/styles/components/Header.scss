@@ -1,0 +1,13 @@
+@import "./../core/variables";
+
+header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: $header-ht;
+  padding: $page-spacing;
+  background-color: $color-white;
+  box-shadow: 0 0 10px 10px $color-light-gray-1;
+  display: flex;
+  align-items: center;
+}

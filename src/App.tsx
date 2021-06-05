@@ -1,16 +1,17 @@
 import React from 'react';
-import './App.scss';
 import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 import BooksList from "./components/books/BooksList";
 import AddUpdateBook from "./components/books/AddUpdateBook";
 import BookDetail from "./components/books/BookDetail";
+import './App.scss';
+import Header from "./components/Header";
 
 
 function App() {
     return (
         <div className="App">
-            <header className="App-header">Grooks Library</header>
-            <div>
+            <Header/>
+            <div className="page-layout">
                 <Router>
                     <Link to="/add">Add Book</Link>
 
