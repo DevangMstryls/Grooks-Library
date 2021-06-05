@@ -36,9 +36,18 @@
       color: $color-gray-1;
     }
   }
+
+  &-al {
+    &-c {
+      text-align: center;
+    }
+  }
 }
 
 .mxw {
+  &-500 {
+    max-width: 500px;
+  }
   &-600 {
     max-width: 600px;
   }

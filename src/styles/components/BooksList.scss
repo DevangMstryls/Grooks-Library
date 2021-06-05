@@ -3,7 +3,11 @@
 
 .books-list {
   margin-top: 40px;
+  min-height: 70vh;
   max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
 }
 
 .search-bar {

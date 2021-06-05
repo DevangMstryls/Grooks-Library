@@ -2,4 +2,7 @@
 
 .page-layout {
   padding: $header-ht $page-spacing 100px;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column;
 }
