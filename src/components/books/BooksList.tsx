@@ -109,9 +109,7 @@ const BooksList = (props: Props) => {
                                 Object.keys(filtersApplied() ? filteredBooks : allBooks).map((bookId) => {
                                     const book = allBooks[bookId];
                                     return (
-                                        <div key={bookId} className="book-card-wrpr">
-                                            <BookCard book={book}/>
-                                        </div>
+                                        <BookCard key={bookId} book={book}/>
                                     );
                                 })
                             }

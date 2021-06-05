@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {connect} from "react-redux";
 import {APP_STATE, BooksState} from "../../core/types/stateTypes";
-import {useLocation, useParams} from "react-router";
+import {useHistory, useLocation, useParams} from "react-router";
 import {Link} from "react-router-dom";
 import {FieldError, useForm} from "react-hook-form";
 import {ACTION_TYPES, BOOK_COVER_PLACEHOLDER, MSGS} from "../../core/constants";
@@ -47,6 +47,7 @@ const AddUpdateBook = (props: Props) => {
 
     const params: any = useParams();
     const location = useLocation();
+    const routerHistory = useHistory();
     const [waitForAddUpdate, setWaitForAddUpdate] = useState(false);
 
     const {
@@ -95,6 +96,7 @@ const AddUpdateBook = (props: Props) => {
                     payload: bookToAdd,
                 });
                 setWaitForAddUpdate(false);
+                routerHistory.push('/');
             }, 1000);
         }
         else if (mode === 'edit') {
@@ -109,8 +111,18 @@ const AddUpdateBook = (props: Props) => {
                     payload: bookToUpdate,
                 });
                 setWaitForAddUpdate(false);
+                routerHistory.push('/');
             }, 1000);
         }
+    };
+
+    const handleCancelClick = (): void => {
+        if (mode === 'edit') {
+            if (confirm('Any changes made will be lost. Confirm cancel?'))
+                routerHistory.goBack();
+        }
+        else
+            routerHistory.goBack();
     };
 
     if (mode === 'edit' && !book) {
@@ -124,7 +136,7 @@ const AddUpdateBook = (props: Props) => {
     }
 
     return (
-        <div className="m-x-auto book-detail">
+        <div className="m-x-auto book-add-update">
 
             <p className="p7">
                 <Link to={'/'}>&lt; Back</Link>
@@ -134,7 +146,7 @@ const AddUpdateBook = (props: Props) => {
 
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="book-details-head">
-                    <div className="book-cover-wrpr flex-center pos-rel">
+                    <div className="book-cover-wrpr pos-rel">
                         <img className="v-al-mdl" src={book?.cover || BOOK_COVER_PLACEHOLDER}/>
                         <div className="book-cover-btn trans">
 
@@ -220,7 +232,7 @@ const AddUpdateBook = (props: Props) => {
                 </div>
 
                 <div className="action-btns flex-justify-flex-end d-flex">
-                    <button type="button" disabled={waitForAddUpdate}>Cancel</button>
+                    <button type="button" disabled={waitForAddUpdate} onClick={handleCancelClick}>Cancel</button>
 
                     <button
                         className={'btn-accent'}
