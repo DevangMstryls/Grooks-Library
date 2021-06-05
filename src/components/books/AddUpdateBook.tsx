@@ -120,7 +120,7 @@ const AddUpdateBook = (props: Props) => {
     }
 
     return (
-        <div className={'m-x-auto mxw-600'}>
+        <div className="m-x-auto add-update-book">
 
             <p className="p7">
                 <Link to={'/'}>&lt; Back</Link>

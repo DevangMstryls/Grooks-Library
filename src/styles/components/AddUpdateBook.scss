@@ -1,6 +1,11 @@
 @import "./../../styles/core/mixins";
 @import "./../../styles/core/variables";
 
+.add-update-book {
+  margin-top: 40px;
+  max-width: 700px;
+}
+
 .book-details-head {
   display: flex;
   flex-flow: column;
@@ -33,6 +38,14 @@
   flex: 1;
 }
 
+.action-btns {
+  margin-top: 30px;
+
+  .btn-accent {
+    margin-left: 20px;
+  }
+}
+
 @include respond-to-min($bp-sm) {
   .book-details-head {
     flex-flow: row;
@@ -40,11 +53,5 @@
   }
   .book-main-details {
     margin-left: 30px;
-  }
-}
-
-.action-btns {
-  .btn-accent {
-    margin-left: 20px;
   }
 }

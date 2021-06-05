@@ -13,7 +13,7 @@ function App() {
             <Header/>
             <div className="page-layout">
                 <Router>
-                    <Link to="/add">Add Book</Link>
+                    {/*<Link to="/add">Add Book</Link>*/}
 
                     <Switch>
                         <Route path="/add">
