@@ -4,6 +4,8 @@ import {connect} from "react-redux";
 import BookCard from "./BookCard";
 import {Book} from "../../core/types/types";
 import "./../../styles/components/BooksList.scss";
+import {AddIcon} from "../icons";
+import {useHistory} from "react-router";
 
 
 const mapStateToProps = (state: APP_STATE) => {
@@ -25,6 +27,7 @@ const BooksList = (props: Props) => {
     } = props;
 
     const allBooks: { [bookId: string]: Book } = books.data;
+    const routerHistory = useHistory();
 
     const [searchTerm, setSearchTerm] = useState('');
     const [waitForSearch, setWaitForSearch] = useState(false);
@@ -103,6 +106,15 @@ const BooksList = (props: Props) => {
                 (filtersApplied() && !Object.keys(filteredBooks).length) &&
                 <p>No book found for &quot;{searchTerm}&quot;</p>
             }
+
+            <button
+                className="btn-icon add-book-btn"
+                onClick={() => {
+                    routerHistory.push('/add');
+                }}
+            >
+                <AddIcon/>
+            </button>
         </div>
     );
 };

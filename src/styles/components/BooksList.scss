@@ -21,6 +21,22 @@
   grid-gap: 20px 20px;
 }
 
+.add-book-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: $color-accent;
+  box-shadow: $box-shadow-1;
+
+  svg {
+    fill: $color-white;;
+  }
+
+  &:hover {
+    background: $color-accent-dark;
+  }
+}
+
 @include respond-to-min($bp-sm) {
   .books-feed {
     grid-template-columns: 1fr 1fr;
