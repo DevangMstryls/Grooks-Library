@@ -4,7 +4,7 @@ import {APP_STATE, BooksState} from "../../core/types/stateTypes";
 import {useLocation, useParams} from "react-router";
 import {Link} from "react-router-dom";
 import {FieldError, useForm} from "react-hook-form";
-import {ACTION_TYPES, MSGS} from "../../core/constants";
+import {ACTION_TYPES, BOOK_COVER_PLACEHOLDER, MSGS} from "../../core/constants";
 import TextField from "../form/TextField";
 import TextareaField from "../form/TextareaField";
 import NumberField from "../form/NumberField";
@@ -119,8 +119,9 @@ const AddUpdateBook = (props: Props) => {
         );
     }
 
-    // book['cover'] = 'https://bookstoreromanceday.org/wp-content/uploads/2020/08/book-cover-placeholder.png';
-    book['cover'] = 'https://images-na.ssl-images-amazon.com/images/I/5112YFsXIJL.jpg';
+    if (mode === 'edit') {
+        book['cover'] = 'https://images-na.ssl-images-amazon.com/images/I/5112YFsXIJL.jpg';
+    }
 
     return (
         <div className="m-x-auto book-detail">
@@ -134,7 +135,7 @@ const AddUpdateBook = (props: Props) => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="book-details-head">
                     <div className="book-cover-wrpr flex-center pos-rel">
-                        <img className="v-al-mdl" src={book.cover}/>
+                        <img className="v-al-mdl" src={book?.cover || BOOK_COVER_PLACEHOLDER}/>
                         <div className="book-cover-btn trans">
 
                         </div>

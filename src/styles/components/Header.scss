@@ -7,7 +7,7 @@ header {
   height: $header-ht;
   padding: $page-spacing;
   background-color: $color-white;
-  box-shadow: 0 0 10px 10px $color-transparent-light-gray;
+  box-shadow: $box-shadow-1;
   display: flex;
   align-items: center;
 }
