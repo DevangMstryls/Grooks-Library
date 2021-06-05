@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import BookCard from "./BookCard";
 import {Book} from "../../core/types/types";
 import "./../../styles/components/BooksList.scss";
-import {AddIcon} from "../icons";
+import {AddIcon, BookIcon} from "../icons";
 import {useHistory} from "react-router";
 
 
@@ -67,46 +67,69 @@ const BooksList = (props: Props) => {
         filterBooks();
     }, [searchTerm]);
 
+    const booksAdded = !!Object.keys(allBooks).length;
+
     return (
-        <div className="m-x-auto books-list">
-
-            <h1 className="h2">{filtersApplied() ? `Showing results for "${searchTerm}"` : 'All Books'}</h1>
-
-            <div className="search-bar">
-                <input
-                    type="search"
-                    placeholder={'Search for books by name, description, author, publisher'}
-                    value={searchTerm}
-                    onChange={(e) => {
-                        setSearchTerm(e.target.value);
-                    }}
-                    onKeyUp={(e) => {
-                        if (e.key === 'Enter') {
-                            doSearch();
-                        }
-                    }}
-                />
-                {/*<button onClick={() => doSearch()}>{waitForSearch ? 'Searching...' : 'Search'}</button>*/}
-            </div>
-
-            <div className="books-feed">
-                {
-                    Object.keys(filtersApplied() ? filteredBooks : allBooks).map((bookId) => {
-                        const book = allBooks[bookId];
-                        return (
-                            <div key={bookId} className="book-card-wrpr">
-                                <BookCard book={book}/>
-                            </div>
-                        );
-                    })
-                }
-            </div>
+        <div className={`m-x-auto books-list ${booksAdded ? '' : 'flex-justify-center'}`}>
 
             {
-                (filtersApplied() && !Object.keys(filteredBooks).length) &&
-                <p>No book found for &quot;{searchTerm}&quot;</p>
+                !booksAdded
+                    ?
+                    <div className="txt-al-c">
+                        <BookIcon width={100} height={100} color={'#bab9b9'}/>
+                        <p className="p2 m-t-s txt-clr-gray-1 mxw-500 m-x-auto">There are no books in your library. Add
+                            books by clicking on the Add (+) button
+                            below</p>
+                    </div>
+                    :
+                    <>
+                        <h1 className="h2">{filtersApplied() ? `Showing results for "${searchTerm}"` : 'All Books'}</h1>
+
+                        {/* search bar */}
+                        <div className="search-bar">
+                            <input
+                                type="search"
+                                placeholder={'Search for books by name, description, author, publisher'}
+                                value={searchTerm}
+                                onChange={(e) => {
+                                    setSearchTerm(e.target.value);
+                                }}
+                                onKeyUp={(e) => {
+                                    if (e.key === 'Enter') {
+                                        doSearch();
+                                    }
+                                }}
+                            />
+                            {/*<button onClick={() => doSearch()}>{waitForSearch ? 'Searching...' : 'Search'}</button>*/}
+                        </div>
+
+                        {/* books feed */}
+                        <div className="books-feed">
+                            {
+                                Object.keys(filtersApplied() ? filteredBooks : allBooks).map((bookId) => {
+                                    const book = allBooks[bookId];
+                                    return (
+                                        <div key={bookId} className="book-card-wrpr">
+                                            <BookCard book={book}/>
+                                        </div>
+                                    );
+                                })
+                            }
+                        </div>
+                    </>
             }
 
+            {/* no books found */}
+            {
+                (filtersApplied() && !Object.keys(filteredBooks).length) &&
+                <div className="txt-al-c">
+                    <BookIcon width={100} height={100} color={'#bab9b9'}/>
+                    <p className="p2 m-t-s txt-clr-gray-1 mxw-500 m-x-auto">No book found
+                        for &quot;{searchTerm}&quot;</p>
+                </div>
+            }
+
+            {/* add button */}
             <button
                 className="btn-icon add-book-btn"
                 onClick={() => {
