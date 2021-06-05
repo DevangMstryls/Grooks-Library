@@ -2,13 +2,14 @@ import React, {useState} from "react";
 import {connect} from "react-redux";
 import {APP_STATE, BooksState} from "../../core/types/stateTypes";
 import {useLocation, useParams} from "react-router";
+import {Link} from "react-router-dom";
 import {FieldError, useForm} from "react-hook-form";
 import {ACTION_TYPES, MSGS} from "../../core/constants";
 import TextField from "../form/TextField";
 import TextareaField from "../form/TextareaField";
 import NumberField from "../form/NumberField";
 import {Book} from "../../core/types/types";
-
+import "./../../styles/components/AddUpdateBook.scss";
 
 const mapStateToProps = (state: APP_STATE) => {
     return {
@@ -120,81 +121,108 @@ const AddUpdateBook = (props: Props) => {
 
     return (
         <div className={'m-x-auto mxw-600'}>
+
+            <p className="p7">
+                <Link to={'/'}>&lt; Back</Link>
+            </p>
+
+            <h1 className="h2">{mode === 'add' ? 'Add a New Book' : `Update book: ${book.name}`}</h1>
+
             <form onSubmit={handleSubmit(onSubmit)}>
-                {/* name */}
-                <TextField
-                    label={'Book Name'}
-                    placeholder={'To kill a mocking bird'}
-                    name={formFields.name}
-                    defaultValue={initialValues[formFields.name]}
-                    touched={touchedFields[formFields.name]}
-                    error={getErrorMessage(errors[formFields.name])}
-                    register={register}
-                    rules={{
-                        required: true,
-                    }}
-                />
+                <div className="book-details-head">
+                    <div>
+                        <div className="book-cover-wrpr flex-center pos-rel">
+                            {/*<img src={'https://bookstoreromanceday.org/wp-content/uploads/2020/08/book-cover-placeholder.png'}/>*/}
+                            <img className="v-al-mdl" src={'https://images-na.ssl-images-amazon.com/images/I/5112YFsXIJL.jpg'} />
+                            <div className="book-cover-btn trans">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div className="book-main-details">
+                        {/* name */}
+                        <TextareaField
+                            label={'Book Name'}
+                            placeholder={'To kill a mocking bird'}
+                            name={formFields.name}
+                            defaultValue={initialValues[formFields.name]}
+                            touched={touchedFields[formFields.name]}
+                            error={getErrorMessage(errors[formFields.name])}
+                            register={register}
+                            rules={{
+                                required: true,
+                            }}
+                        />
 
-                {/* description */}
-                <TextareaField
-                    label={'Description'}
-                    placeholder={'A brief about the book'}
-                    name={formFields.description}
-                    defaultValue={initialValues[formFields.description]}
-                    touched={touchedFields[formFields.description]}
-                    error={getErrorMessage(errors[formFields.description])}
-                    register={register}
-                    rules={{
-                        required: true,
-                    }}
-                />
+                        {/* author */}
+                        <TextField
+                            label={'Author'}
+                            placeholder={'J. K. Rowling'}
+                            name={formFields.author}
+                            defaultValue={initialValues[formFields.author]}
+                            touched={touchedFields[formFields.author]}
+                            error={getErrorMessage(errors[formFields.author])}
+                            register={register}
+                            rules={{
+                                required: true,
+                            }}
+                        />
 
-                {/* author */}
-                <TextField
-                    label={'Author'}
-                    placeholder={'J. K. Rowling'}
-                    name={formFields.author}
-                    defaultValue={initialValues[formFields.author]}
-                    touched={touchedFields[formFields.author]}
-                    error={getErrorMessage(errors[formFields.author])}
-                    register={register}
-                    rules={{
-                        required: true,
-                    }}
-                />
-
-                {/* publisher */}
-                <TextField
-                    label={'Publisher'}
-                    placeholder={'Rupa Publications'}
-                    name={formFields.publisher}
-                    defaultValue={initialValues[formFields.publisher]}
-                    touched={touchedFields[formFields.publisher]}
-                    error={getErrorMessage(errors[formFields.publisher])}
-                    register={register}
-                    rules={{
-                        required: true,
-                    }}
-                />
-
-                {/* available stock */}
-                <NumberField
-                    label={'Available Stock'}
-                    placeholder={'1000'}
-                    name={formFields.availableStock}
-                    defaultValue={initialValues[formFields.availableStock]}
-                    touched={touchedFields[formFields.availableStock]}
-                    error={getErrorMessage(errors[formFields.availableStock])}
-                    register={register}
-                    rules={{
-                        required: true,
-                        valueAsNumber: true,
-                        min: 0,
-                    }}
-                />
+                        <div className="flex-row">
+                            {/* available stock */}
+                            <NumberField
+                                label={'Available Stock'}
+                                placeholder={'1000'}
+                                name={formFields.availableStock}
+                                defaultValue={initialValues[formFields.availableStock]}
+                                touched={touchedFields[formFields.availableStock]}
+                                error={getErrorMessage(errors[formFields.availableStock])}
+                                register={register}
+                                rules={{
+                                    required: true,
+                                    valueAsNumber: true,
+                                    min: 0,
+                                }}
+                            />
+                        </div>
+                    </div>
+                </div>
 
                 <div>
+                    {/* publisher */}
+                    <TextField
+                        label={'Publisher'}
+                        placeholder={'Rupa Publications'}
+                        name={formFields.publisher}
+                        defaultValue={initialValues[formFields.publisher]}
+                        touched={touchedFields[formFields.publisher]}
+                        error={getErrorMessage(errors[formFields.publisher])}
+                        register={register}
+                        rules={{
+                            required: true,
+                        }}
+                    />
+
+                    {/* description */}
+                    <TextareaField
+                        label={'Description'}
+                        placeholder={'A brief about the book'}
+                        name={formFields.description}
+                        defaultValue={initialValues[formFields.description]}
+                        touched={touchedFields[formFields.description]}
+                        error={getErrorMessage(errors[formFields.description])}
+                        register={register}
+                        rules={{
+                            required: true,
+                        }}
+                    />
+                </div>
+
+                <div className="action-btns flex-justify-flex-end d-flex">
+                    <button type="button" disabled={waitForAddUpdate}>Cancel</button>
+
                     <button
+                        className={'btn-accent'}
                         disabled={waitForAddUpdate}
                         type="submit">
                         {
