@@ -110,10 +110,3 @@ h6, .h6 {
   line-height: 150%;
   @include fluid-type($min_width, $max_width, 11px, 13px);
 }
-
-.p9 {
-  font-size: $font-Inter;
-  font-weight: $primary-font-wt-medium;
-  line-height: 150%;
-  @include fluid-type($min_width, $max_width, 13px, 16px);
-}

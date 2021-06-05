@@ -39,10 +39,12 @@ const TextField = (props: Props) => {
                 placeholder={placeholder}
                 {...register(name, rules)}
             />
-            {
-                (touched && error) &&
-                <p className={'m-0 txt-clr-error p7'}>{error}</p>
-            }
+            <div className={'pos-rel error-wrpr'}>
+                {
+                    (touched && error) &&
+                    <p className={'pos-abs m-0 txt-clr-error p8'}>{error}</p>
+                }
+            </div>
         </div>
     );
 };

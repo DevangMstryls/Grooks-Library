@@ -1,6 +1,9 @@
 //@import "variables";
 
 .m {
+  &-x-auto {
+    margin: 0 auto;
+  }
   &-0 {
     margin: 0;
   }
@@ -11,5 +14,20 @@
     &-error {
       color: $color-error;
     }
+  }
+}
+
+.mxw {
+  &-600 {
+    max-width: 600px;
+  }
+}
+
+.pos {
+  &-abs {
+    position: absolute;
+  }
+  &-rel {
+    position: relative;
   }
 }
