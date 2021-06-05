@@ -20,31 +20,8 @@
   }
 }
 
-.book-cover-btn {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background: $color-light-gray-1;
-  opacity: 0.2;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-
-  &:hover {
-    opacity: 0.8;
-  }
-}
-
 .book-main-details {
   flex: 1;
-}
-
-.action-btns {
-  margin-top: 30px;
-
-  .btn-accent {
-    margin-left: 20px;
-  }
 }
 
 @include respond-to-min($bp-sm) {
