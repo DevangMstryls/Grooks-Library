@@ -59,6 +59,12 @@
   }
 }
 
+.h {
+  &-100pc {
+    height: 100%;
+  }
+}
+
 .pos {
   &-abs {
     position: absolute;

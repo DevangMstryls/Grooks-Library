@@ -41,28 +41,37 @@ const BookDetail = (props: Props) => {
 
             <div className="book-details-head">
                 <div>
-                    <div className="book-cover-wrpr flex-center pos-rel">
-                        <img className="v-al-mdl" src={'https://images-na.ssl-images-amazon.com/images/I/5112YFsXIJL.jpg'} />
+                    <div className="book-cover-wrpr pos-rel">
+                        <img
+                            className="v-al-mdl"
+                            src={'https://images-na.ssl-images-amazon.com/images/I/5112YFsXIJL.jpg'}/>
                     </div>
                 </div>
-                <div className="book-main-details">
-                    <h1 className={'h4'}>{book.name}</h1>
-                    <p className="p3">
-                        <span className="txt-clr-gray-1">by&nbsp;</span>
-                        <span>{book.author}</span>
-                    </p>
-                    <p className="p3">
-                        <span className="txt-clr-gray-1">Published by:&nbsp;</span>
-                        <span>{book.publisher}</span>
-                    </p>
-                    <p className="p3">
-                        <span className="txt-clr-gray-1">Available Stock:&nbsp;</span>
-                        <span>{book.availableStock}</span>
-                    </p>
-                    <p className="p6">
-                        <span className="txt-clr-gray-1">Added on:&nbsp;</span>
-                        <span>{book.addedOn}</span>
-                    </p>
+                <div className="book-main-details flex-column flex-justify-space-between">
+                    <div>
+
+                        <h1 className={'h4 m-0'}>{book.name}</h1>
+                        <p className="p3">
+                            <span className="txt-clr-gray-1">by&nbsp;</span>
+                            <span>{book.author}</span>
+                        </p>
+                        <p className="p3">
+                            <span className="txt-clr-gray-1">Published by:&nbsp;</span>
+                            <span>{book.publisher}</span>
+                        </p>
+                        <p className="p3">
+                            <span className="txt-clr-gray-1">Available Stock:&nbsp;</span>
+                            <span>{book.availableStock}</span>
+                        </p>
+                    </div>
+                    <div>
+
+                        <p className="p6 m-0">
+                            <span className="txt-clr-gray-1">Added on:&nbsp;</span>
+                            {/* TODO: parse the date */}
+                            <span>{book.addedOn}</span>
+                        </p>
+                    </div>
                 </div>
             </div>
 

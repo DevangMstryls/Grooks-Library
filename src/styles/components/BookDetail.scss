@@ -5,32 +5,34 @@
   margin-top: 40px;
   max-width: 700px;
   width: 100%;
-}
 
-.book-details-head {
-  margin-top: 40px;
-  display: flex;
-  flex-flow: column;
-}
-
-.book-cover-wrpr {
-  margin-bottom: 30px;
-
-  img {
-    max-width: 250px;
-  }
-}
-
-.book-main-details {
-  flex: 1;
-}
-
-@include respond-to-min($bp-sm) {
   .book-details-head {
-    flex-flow: row;
-    flex-wrap: wrap;
+    margin-top: 40px;
+    display: flex;
+    flex-flow: column;
   }
+
+  .book-cover-wrpr, .book-main-details {
+    margin-bottom: 30px;
+  }
+
+  .book-cover-wrpr {
+    img {
+      max-width: 250px;
+    }
+  }
+
   .book-main-details {
-    margin-left: 30px;
+    flex: 1;
+  }
+
+  @include respond-to-min($bp-sm) {
+    .book-details-head {
+      flex-flow: row;
+      flex-wrap: wrap;
+    }
+    .book-main-details {
+      margin-left: 30px;
+    }
   }
 }
