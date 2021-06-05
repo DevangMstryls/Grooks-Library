@@ -1,0 +1,28 @@
+@import "./../../styles/core/mixins";
+@import "./../../styles/core/variables";
+
+.books-list {
+  margin-top: 40px;
+  max-width: 800px;
+}
+
+.search-bar {
+  max-width: 500px;
+}
+
+.books-feed {
+  margin: 40px 0;
+}
+
+.books-feed {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px 20px;
+}
+
+@include respond-to-min($bp-sm) {
+  .books-feed {
+    grid-template-columns: 1fr 1fr;
+  }
+}

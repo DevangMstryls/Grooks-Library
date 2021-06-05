@@ -3,6 +3,8 @@ import {APP_STATE, BooksState} from "../../core/types/stateTypes";
 import {connect} from "react-redux";
 import BookCard from "./BookCard";
 import {Book} from "../../core/types/types";
+import "./../../styles/components/BooksList.scss";
+
 
 const mapStateToProps = (state: APP_STATE) => {
     return {
@@ -26,14 +28,16 @@ const BooksList = (props: Props) => {
 
     const [searchTerm, setSearchTerm] = useState('');
     const [waitForSearch, setWaitForSearch] = useState(false);
-    const [filtersApplied, setFiltersApplied] = useState(false);
     const [filteredBooks, setFilteredBooks] = useState({});
 
     const timeoutRef: any = useRef();
 
-    const doSearch = () => {
+    const filtersApplied = (): boolean => {
+        return searchTerm.trim() !== '';
+    };
+
+    const doSearch = (): void => {
         if (searchTerm.trim() === '') {
-            setFiltersApplied(false);
             return;
         }
 
@@ -41,12 +45,11 @@ const BooksList = (props: Props) => {
         clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(() => {
             filterBooks();
-            setFiltersApplied(true);
             setWaitForSearch(false);
         }, 1000);
     };
 
-    const filterBooks = () => {
+    const filterBooks = (): void => {
         const filtered: { [bookId: string]: Book } = {};
         Object.values(allBooks).forEach((book) => {
             const searchable = `${book.name} ${book.description} ${book.author} ${book.publisher}`;
@@ -55,7 +58,6 @@ const BooksList = (props: Props) => {
             }
         });
         setFilteredBooks(filtered);
-        setFiltersApplied(true);
     };
 
     useEffect(() => {
@@ -63,17 +65,17 @@ const BooksList = (props: Props) => {
     }, [searchTerm]);
 
     return (
-        <div className={'m-x-auto mxw-600'}>
-            <div>
+        <div className="m-x-auto books-list">
+
+            <h1 className="h2">{filtersApplied() ? `Showing results for "${searchTerm}"` : 'All Books'}</h1>
+
+            <div className="search-bar">
                 <input
                     type="search"
                     placeholder={'Search for books by name, description, author, publisher'}
                     value={searchTerm}
                     onChange={(e) => {
                         setSearchTerm(e.target.value);
-                        if (e.target.value.trim() === '') {
-                            setFiltersApplied(false);
-                        }
                     }}
                     onKeyUp={(e) => {
                         if (e.key === 'Enter') {
@@ -81,23 +83,24 @@ const BooksList = (props: Props) => {
                         }
                     }}
                 />
-                <button onClick={() => doSearch()}>{waitForSearch ? 'Searching...' : 'Search'}</button>
+                {/*<button onClick={() => doSearch()}>{waitForSearch ? 'Searching...' : 'Search'}</button>*/}
+            </div>
+
+            <div className="books-feed">
+                {
+                    Object.keys(filtersApplied() ? filteredBooks : allBooks).map((bookId) => {
+                        const book = allBooks[bookId];
+                        return (
+                            <div key={bookId} className="book-card-wrpr">
+                                <BookCard book={book}/>
+                            </div>
+                        );
+                    })
+                }
             </div>
 
             {
-                Object.keys(filtersApplied ? filteredBooks : allBooks).map((bookId) => {
-                    const book = allBooks[bookId];
-                    return (
-                        <BookCard
-                            key={bookId}
-                            book={book}
-                        />
-                    );
-                })
-            }
-
-            {
-                (filtersApplied && !Object.keys(filteredBooks).length) &&
+                (filtersApplied() && !Object.keys(filteredBooks).length) &&
                 <p>No book found for &quot;{searchTerm}&quot;</p>
             }
         </div>
