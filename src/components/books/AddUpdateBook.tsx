@@ -119,8 +119,11 @@ const AddUpdateBook = (props: Props) => {
         );
     }
 
+    // book['cover'] = 'https://bookstoreromanceday.org/wp-content/uploads/2020/08/book-cover-placeholder.png';
+    book['cover'] = 'https://images-na.ssl-images-amazon.com/images/I/5112YFsXIJL.jpg';
+
     return (
-        <div className="m-x-auto add-update-book">
+        <div className="m-x-auto book-detail">
 
             <p className="p7">
                 <Link to={'/'}>&lt; Back</Link>
@@ -130,13 +133,10 @@ const AddUpdateBook = (props: Props) => {
 
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="book-details-head">
-                    <div>
-                        <div className="book-cover-wrpr flex-center pos-rel">
-                            {/*<img src={'https://bookstoreromanceday.org/wp-content/uploads/2020/08/book-cover-placeholder.png'}/>*/}
-                            <img className="v-al-mdl" src={'https://images-na.ssl-images-amazon.com/images/I/5112YFsXIJL.jpg'} />
-                            <div className="book-cover-btn trans">
-                                
-                            </div>
+                    <div className="book-cover-wrpr flex-center pos-rel">
+                        <img className="v-al-mdl" src={book.cover}/>
+                        <div className="book-cover-btn trans">
+
                         </div>
                     </div>
                     <div className="book-main-details">

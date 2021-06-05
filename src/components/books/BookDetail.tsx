@@ -3,6 +3,7 @@ import {APP_STATE, BooksState} from "../../core/types/stateTypes";
 import {connect} from "react-redux";
 import {useParams} from "react-router";
 import {Link} from "react-router-dom";
+import "./../../styles/components/BookDetail.scss";
 
 
 const mapStateToProps = (state: APP_STATE) => {
@@ -33,14 +34,41 @@ const BookDetail = (props: Props) => {
     }
 
     return (
-        <div className={'m-x-auto mxw-600'}>
-            <Link to={'/'}>&lt; Back</Link>
-            <h1 className={'p1'}>{book.name}</h1>
-            <p>{book.description}</p>
-            <p>{book.author}</p>
-            <p>{book.publisher}</p>
-            <p>{book.addedOn}</p>
-            <p>{book.availableStock}</p>
+        <div className="m-x-auto book-detail">
+            <p className="p7">
+                <Link to={'/'}>&lt; Back</Link>
+            </p>
+
+            <div className="book-details-head">
+                <div>
+                    <div className="book-cover-wrpr flex-center pos-rel">
+                        <img className="v-al-mdl" src={'https://images-na.ssl-images-amazon.com/images/I/5112YFsXIJL.jpg'} />
+                    </div>
+                </div>
+                <div className="book-main-details">
+                    <h1 className={'h4'}>{book.name}</h1>
+                    <p className="p3">
+                        <span className="txt-clr-gray-1">by&nbsp;</span>
+                        <span>{book.author}</span>
+                    </p>
+                    <p className="p3">
+                        <span className="txt-clr-gray-1">Published by:&nbsp;</span>
+                        <span>{book.publisher}</span>
+                    </p>
+                    <p className="p3">
+                        <span className="txt-clr-gray-1">Available Stock:&nbsp;</span>
+                        <span>{book.availableStock}</span>
+                    </p>
+                    <p className="p6">
+                        <span className="txt-clr-gray-1">Added on:&nbsp;</span>
+                        <span>{book.addedOn}</span>
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <p className="p3">{book.description}</p>
+            </div>
         </div>
     );
 };

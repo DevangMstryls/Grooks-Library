@@ -32,10 +32,7 @@ textarea {
   .error-wrpr {
     min-height: 20px;
     margin-top: 5px;
-
-    p {
-      text-align: right;
-    }
+    margin-bottom: 10px;
   }
 
   &.has-error {
