@@ -23,7 +23,11 @@
 - [x] Make the List book page
 - [x] Make the book card
 - [x] Make the book detail page
-- [ ] Make the search book functionality
+- [x] Make the search book functionality
     Available Filters:
-    - [ ] Generic text search through Title, Description, Author, Publisher (text input)
+    - [x] Generic text search through Title, Description, Author, Publisher (text input)
     - [ ] Available Stock (range/select input)
+- [ ] Add styles
+- [ ] Make options dropdown
+- [ ] Make delete functionality
+
