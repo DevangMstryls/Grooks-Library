@@ -21,7 +21,7 @@
 .books-feed {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto;
+  grid-auto-rows: 1fr;
   grid-gap: 20px 20px;
 }
 

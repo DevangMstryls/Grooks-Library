@@ -74,8 +74,8 @@ const BookCard = (props: Props) => {
                 }
             </div>
 
-            <div className="flex-row flex-align-flex-start">
-                <div className="book-cover flex-center pos-rel">
+            <div className="flex-row flex-align-flex-start h-100pc">
+                <div className="book-cover pos-rel">
                     <img className="v-al-mdl" src={book.cover} alt={book.name}/>
                 </div>
                 <div className="flex-1 flex-column flex-justify-space-between">
