@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {Dispatch, useEffect, useRef, useState} from "react";
 import {APP_STATE, BooksState} from "../../core/types/stateTypes";
 import {connect} from "react-redux";
 import BookCard from "./BookCard";
@@ -23,38 +23,42 @@ const BooksList = (props: Props) => {
 
     const {
         books,
-        // dispatch,
     } = props;
 
-    const allBooks: { [bookId: string]: Book } = books.data;
+    const allBooks: Book[] = books.data;
     const routerHistory = useHistory();
 
     const [searchTerm, setSearchTerm] = useState('');
-    // const [waitForSearch, setWaitForSearch] = useState(false);
-    const [filteredBooks, setFilteredBooks] = useState({});
+    const [filteredBooks, setFilteredBooks]: [Book[], Dispatch<any>] = useState([]);
 
     const timeoutRef: any = useRef();
+
+    const booksAdded = !!allBooks.length;
+
+    const sortAllBooks = () => {
+        return allBooks.sort((a, b) => {
+            return new Date(a.addedOn).getTime() - new Date(b.addedOn).getTime();
+        });
+    };
+
+    const sortedAllBooks = sortAllBooks();
 
     const filtersApplied = (): boolean => {
         return searchTerm.trim() !== '';
     };
 
     const doSearch = (): void => {
-        if (searchTerm.trim() === '') {
-            return;
-        }
+        if (searchTerm.trim() === '') return;
 
-        // setWaitForSearch(true);
         clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(() => {
             filterBooks();
-            // setWaitForSearch(false);
         }, 1000);
     };
 
     const filterBooks = (): void => {
         const filtered: { [bookId: string]: Book } = {};
-        Object.values(allBooks).forEach((book) => {
+        sortedAllBooks.forEach((book) => {
             const searchable = `${book.name} ${book.description} ${book.author} ${book.publisher}`;
             if (searchable.toLowerCase().includes(searchTerm.toLowerCase())) {
                 filtered[book.id] = book;
@@ -66,8 +70,6 @@ const BooksList = (props: Props) => {
     useEffect(() => {
         filterBooks();
     }, [searchTerm]);
-
-    const booksAdded = !!Object.keys(allBooks).length;
 
     return (
         <div className={`m-x-auto books-list ${booksAdded ? '' : 'flex-justify-center'}`}>
@@ -106,10 +108,9 @@ const BooksList = (props: Props) => {
                         {/* books feed */}
                         <div className="books-feed">
                             {
-                                Object.keys(filtersApplied() ? filteredBooks : allBooks).map((bookId) => {
-                                    const book = allBooks[bookId];
+                                (filtersApplied() ? filteredBooks : sortedAllBooks).map((book: Book) => {
                                     return (
-                                        <BookCard key={bookId} book={book}/>
+                                        <BookCard key={book.id} book={book}/>
                                     );
                                 })
                             }
@@ -119,7 +120,7 @@ const BooksList = (props: Props) => {
 
             {/* no books found */}
             {
-                (filtersApplied() && !Object.keys(filteredBooks).length) &&
+                (filtersApplied() && !filteredBooks.length) &&
                 <div className="txt-al-c">
                     <BookIcon width={100} height={100} color={'#bab9b9'}/>
                     <p className="p2 m-t-s txt-clr-gray-1 mxw-500 m-x-auto">No book found

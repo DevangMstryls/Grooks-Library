@@ -11,27 +11,36 @@ export function booksReducer(state = INITIAL_STATE.books, action: Action): Books
         case ACTION_TYPES.ADD_BOOK: {
             return {
                 ...state,
-                data: {
-                    ...state.data,
-                    [payload.id]: payload,
-                },
+                data: [...state.data, payload],
             };
         }
 
         case ACTION_TYPES.UPDATE_BOOK: {
+            const newData = [...state.data];
+            const i = newData.findIndex((b) => b.id === payload.id);
+            if (i !== -1) {
+                newData[i] = {
+                    ...newData[i],
+                    ...payload,
+                };
+            }
+
             return {
                 ...state,
-                data: {
-                    ...state.data,
-                    [payload.id]: payload,
-                },
+                data: newData,
             };
         }
 
         case ACTION_TYPES.DELETE_BOOK: {
-            const newState = {...state};
-            delete newState.data[payload.id];
-            return newState;
+            const newData = [...state.data];
+            const i = newData.findIndex((b) => b.id === payload.id);
+            if (i !== -1)
+                delete newData[i];
+
+            return {
+                ...state,
+                data: newData,
+            };
         }
     }
 

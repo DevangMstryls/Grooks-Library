@@ -57,7 +57,7 @@ const AddUpdateBook = (props: Props) => {
         dispatch,
     } = props;
 
-    const book = books.data[params.id] || null;
+    const book = books.data.find((b: Book) => b.id === params.id) || null;
 
     const location = useLocation();
     const routerHistory = useHistory();
@@ -118,6 +118,7 @@ const AddUpdateBook = (props: Props) => {
         }
         else if (mode === 'edit') {
             const bookToUpdate: Book = {
+                ...book,
                 ...data,
                 id: book.id,
                 cover: data.cover ?? coverImg,

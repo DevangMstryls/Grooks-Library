@@ -9,6 +9,7 @@ import {ACTION_TYPES, BOOK_COVER_PLACEHOLDER} from "../../core/constants";
 import BackLink from "../BackLink";
 import {formatInIndianNumeric, getFormattedDate} from "../../core/utils";
 import {BookNotFoundMsg} from "./BookNotFoundMsg";
+import {Book} from "../../core/types/types";
 
 
 const mapStateToProps = (state: APP_STATE) => {
@@ -33,7 +34,7 @@ const BookDetail = (props: Props) => {
         // dispatch,
     } = props;
 
-    const book = books.data[params.id] || null;
+    const book = books.data.find((b: Book) => b.id === params.id) || null;
 
     const handleDropdownClick = (): void => {
         setShowMenu(!showMenu);
