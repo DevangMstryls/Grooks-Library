@@ -1,0 +1,41 @@
+@import "variables";
+
+
+.menu-open-btn {
+  top: -20px;
+  right: -20px;
+  background: $color-white;
+  height: 10px;
+  width: 10px;
+
+  &:hover, &:focus {
+    background: $color-white;
+  }
+}
+
+.menu {
+  background: $color-white;
+  box-shadow: 0 0 7px -2px #0000002e;
+  border-radius: 4px;
+  top: 20px;
+  right: 0;
+  overflow: hidden;
+
+  &-item {
+    padding: 10px;
+
+    &:hover {
+      background: $color-light-gray-1;
+    }
+
+    &.delete-item {
+      &:hover {
+        color: $color-error;
+
+        svg {
+          fill: $color-error;
+        }
+      }
+    }
+  }
+}

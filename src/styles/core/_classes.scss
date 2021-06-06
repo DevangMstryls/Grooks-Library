@@ -158,17 +158,21 @@
       }
     }
   }
+
+  &-wrap {
+    &-wrap {
+      flex-wrap: wrap;
+    }
+  }
+
+  &-1 {
+    flex: 1;
+  }
 }
 
-
-.flex-wrap-wrap {
-  flex-wrap: wrap;
+.cur-p {
+  cursor: pointer;
 }
-
-.flex-1 {
-  flex: 1;
-}
-
 
 .trans {
   transition: all 300ms ease-in-out;
