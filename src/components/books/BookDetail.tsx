@@ -2,10 +2,11 @@ import React, {useState} from "react";
 import {APP_STATE, BooksState} from "../../core/types/stateTypes";
 import {connect, useDispatch} from "react-redux";
 import {useParams} from "react-router";
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import "./../../styles/components/BookDetail.scss";
 import {ChevronDownIcon, ChevronUpIcon, DeleteIcon, EditIcon} from "../icons";
 import {ACTION_TYPES} from "../../core/constants";
+import BackLink from "../BackLink";
 
 
 const mapStateToProps = (state: APP_STATE) => {
@@ -59,9 +60,16 @@ const BookDetail = (props: Props) => {
 
     return (
         <div className="m-x-auto book-detail">
-            <p className="p7">
-                <Link to={'/'}>&lt; Back</Link>
-            </p>
+
+            <BackLink
+                onClick={() => {
+                    if (routerHistory.length > 1)
+                        routerHistory.goBack();
+                    else {
+                        routerHistory.push('/');
+                    }
+                }}
+            />
 
             <div className="book-details-head pos-rel">
                 <button className="btn-icon menu-open-btn pos-abs" onClick={handleDropdownClick}>

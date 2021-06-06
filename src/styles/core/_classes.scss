@@ -48,6 +48,7 @@
   &-500 {
     max-width: 500px;
   }
+
   &-600 {
     max-width: 600px;
   }
@@ -77,12 +78,6 @@
 
 .v-al-mdl {
   vertical-align: middle;
-}
-
-.d {
-  &-flex {
-    display: flex;
-  }
 }
 
 .flex {
@@ -167,6 +162,16 @@
 
   &-1 {
     flex: 1;
+  }
+}
+
+.d {
+  &-flex {
+    display: flex;
+  }
+
+  &-inline-flex {
+    display: inline-flex;
   }
 }
 

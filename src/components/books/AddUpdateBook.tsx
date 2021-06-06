@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import {connect} from "react-redux";
 import {APP_STATE, BooksState} from "../../core/types/stateTypes";
 import {useHistory, useLocation, useParams} from "react-router";
-import {Link} from "react-router-dom";
 import {FieldError, useForm} from "react-hook-form";
 import {ACTION_TYPES, BOOK_COVER_PLACEHOLDER, MSGS} from "../../core/constants";
 import TextField from "../form/TextField";
@@ -10,6 +9,7 @@ import TextareaField from "../form/TextareaField";
 import NumberField from "../form/NumberField";
 import {Book} from "../../core/types/types";
 import "./../../styles/components/AddUpdateBook.scss";
+import BackLink from "../BackLink";
 
 const mapStateToProps = (state: APP_STATE) => {
     return {
@@ -138,10 +138,15 @@ const AddUpdateBook = (props: Props) => {
     return (
         <div className="m-x-auto book-add-update">
 
-            <p className="p7">
-                {/* TODO: fix this */}
-                <Link to={'/'}>&lt; Back</Link>
-            </p>
+            <BackLink
+                onClick={() => {
+                    if (routerHistory.length > 1)
+                        routerHistory.goBack();
+                    else {
+                        routerHistory.replace('/');
+                    }
+                }}
+            />
 
             <h1 className="h2">{mode === 'add' ? 'Add a New Book' : `Update book: ${book.name}`}</h1>
 

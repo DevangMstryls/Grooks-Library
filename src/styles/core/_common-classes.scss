@@ -39,3 +39,20 @@
     }
   }
 }
+
+.back-link {
+  color: $color-dark-gray-1;
+  margin-left: -7px;
+
+  svg {
+    fill: $color-dark-gray-1;
+  }
+
+  &:hover, &:focus {
+    color: $color-accent;
+
+    svg {
+      fill: $color-accent;
+    }
+  }
+}
