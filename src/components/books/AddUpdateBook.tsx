@@ -30,6 +30,7 @@ const formFields = {
     publisher: 'publisher',
     availableStock: 'availableStock',
     cover: 'cover',
+    price: 'price',
 };
 
 const getErrorMessage = (e: FieldError | undefined): string => {
@@ -69,6 +70,7 @@ const AddUpdateBook = (props: Props) => {
         [formFields.publisher]: book?.publisher || '',
         [formFields.availableStock]: book?.availableStock || '',
         [formFields.cover]: book?.cover || '',
+        [formFields.price]: book?.price || '',
     };
 
     let mode = '';
@@ -222,7 +224,23 @@ const AddUpdateBook = (props: Props) => {
                             }}
                         />
 
-                        <div className="flex-row">
+                        <div className="flex-row flex-justify-space-between">
+                            {/* price*/}
+                            <NumberField
+                                label={'Price (₹)'}
+                                placeholder={'1000'}
+                                name={formFields.price}
+                                defaultValue={initialValues[formFields.price]}
+                                touched={touchedFields[formFields.price]}
+                                error={getErrorMessage(errors[formFields.price])}
+                                register={register}
+                                rules={{
+                                    required: true,
+                                    valueAsNumber: true,
+                                    min: 0,
+                                }}
+                            />
+
                             {/* available stock */}
                             <NumberField
                                 label={'Available Stock'}

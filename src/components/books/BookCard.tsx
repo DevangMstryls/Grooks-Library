@@ -22,9 +22,6 @@ const BookCard = (props: Props) => {
         book,
     } = props;
 
-    // TODO: remove these
-    book['price'] = 3020;
-
     const handleOnClick = (e: any): void => {
         if (!e.target.closest('.menu-open-btn') && !e.target.closest('.menu'))
             routerHistory.push(`/book/${book.id}`);
