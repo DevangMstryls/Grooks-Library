@@ -10,7 +10,9 @@ type Props = {
     placeholder?: string,
     defaultValue?: string,
     rules?: {[fieldName: string]: any}
-}
+} & {
+    [attr: string]: any,
+};
 
 const TextField = (props: Props) => {
     const {
@@ -22,6 +24,7 @@ const TextField = (props: Props) => {
         placeholder = '',
         defaultValue = '',
         rules = {},
+        ...otherProps
     } = props;
 
     return (
@@ -38,6 +41,7 @@ const TextField = (props: Props) => {
                 defaultValue={defaultValue}
                 placeholder={placeholder}
                 {...register(name, rules)}
+                {...otherProps}
             />
             <div className={'pos-rel error-wrpr'}>
                 {

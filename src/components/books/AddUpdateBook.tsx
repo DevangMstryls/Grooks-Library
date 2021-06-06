@@ -287,6 +287,7 @@ const AddUpdateBook = (props: Props) => {
                         rules={{
                             required: true,
                         }}
+                        rows={6}
                     />
                 </div>
 
