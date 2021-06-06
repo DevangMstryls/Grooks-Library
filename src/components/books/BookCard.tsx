@@ -79,14 +79,14 @@ const BookCard = (props: Props) => {
                     <img className="v-al-mdl" src={book.cover || BOOK_COVER_PLACEHOLDER} alt={book.name}/>
                 </div>
                 <div className="flex-1 flex-column flex-justify-space-between">
-                    <div>
-                        <p className="p2 m-0 m-b-s book-name">{book.name}</p>
-                        <p className="p4 txt-clr-gray-1">{book.author}</p>
+                    <div className="m-b-s">
+                        <p className="p4 txt-clr-black m-0 book-name">{book.name}</p>
+                        <p className="p5 txt-clr-gray-1 m-0">by {book.author}</p>
                     </div>
-                    <div className="flex-row flex-justify-space-between flex-align-items-center">
-                        <p className="txt-clr-gray-1 p2 m-0">₹&nbsp;{formatInIndianNumeric(book.price)}</p>
-                        <p className={`p4 m-0 ${book.availableStock < 10 ? 'txt-clr-error' : 'txt-clr-gray-1'}`}>In
+                    <div className="m-t-s">
+                        <p className={`p5 m-0 ${book.availableStock < 10 ? 'txt-clr-error' : 'txt-clr-gray-1'}`}>In
                             Stock:&nbsp;{nFormatter(book.availableStock, 2)}</p>
+                        <p className="txt-clr-gray-1 h6 m-0">₹{formatInIndianNumeric(book.price)}</p>
                     </div>
                 </div>
             </div>
