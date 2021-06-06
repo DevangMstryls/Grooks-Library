@@ -4,7 +4,7 @@ import {Book} from "../../core/types/types";
 import "./../../styles/components/BookCard.scss";
 import {ChevronDownIcon, ChevronUpIcon, DeleteIcon, EditIcon} from "../icons";
 import {useDispatch} from "react-redux";
-import {ACTION_TYPES} from "../../core/constants";
+import {ACTION_TYPES, BOOK_COVER_PLACEHOLDER} from "../../core/constants";
 
 
 type Props = {
@@ -22,7 +22,6 @@ const BookCard = (props: Props) => {
     } = props;
 
     // TODO: remove these
-    book['cover'] = 'https://images-na.ssl-images-amazon.com/images/I/5112YFsXIJL.jpg';
     book['price'] = 300;
 
     const handleOnClick = (e: any): void => {
@@ -76,7 +75,7 @@ const BookCard = (props: Props) => {
 
             <div className="flex-row flex-align-flex-start h-100pc">
                 <div className="book-cover pos-rel">
-                    <img className="v-al-mdl" src={book.cover} alt={book.name}/>
+                    <img className="v-al-mdl" src={book.cover || BOOK_COVER_PLACEHOLDER} alt={book.name}/>
                 </div>
                 <div className="flex-1 flex-column flex-justify-space-between">
                     <div>

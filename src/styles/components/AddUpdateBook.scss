@@ -20,19 +20,42 @@
     }
   }
 
-  .book-cover-btn {
+  .image-input-wrpr {
     position: absolute;
     height: 100%;
     width: 100%;
-    background: $color-light-gray-1;
-    opacity: 0;
     top: 0;
     left: 0;
-    cursor: pointer;
+    padding: 10px;
+    overflow: hidden;
 
-    &:hover {
-      opacity: 0.8;
+    .form-field {
+      width: 100%;
+      margin-top: 10px;
+      flex: 1;
+
+      textarea {
+        height: 100%;
+        resize: none;
+      }
     }
+
+    &.is-img-inp-open {
+      background: $color-light-gray-4;
+    }
+  }
+
+  .save-img-btn {
+    margin-right: 10px;
+    background: $color-accent;
+
+    svg {
+      fill: $color-white;
+    }
+  }
+
+  .edit-img-btn {
+    background: $color-white;
   }
 
   .book-main-details {

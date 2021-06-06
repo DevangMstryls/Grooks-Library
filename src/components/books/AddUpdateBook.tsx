@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import {connect} from "react-redux";
 import {APP_STATE, BooksState} from "../../core/types/stateTypes";
 import {useHistory, useLocation, useParams} from "react-router";
@@ -10,6 +10,7 @@ import NumberField from "../form/NumberField";
 import {Book} from "../../core/types/types";
 import "./../../styles/components/AddUpdateBook.scss";
 import BackLink from "../BackLink";
+import {CheckIcon, CloseIcon, EditIcon} from "../icons";
 
 const mapStateToProps = (state: APP_STATE) => {
     return {
@@ -27,6 +28,7 @@ const formFields = {
     author: 'author',
     publisher: 'publisher',
     availableStock: 'availableStock',
+    cover: 'cover',
 };
 
 const getErrorMessage = (e: FieldError | undefined): string => {
@@ -49,6 +51,8 @@ const AddUpdateBook = (props: Props) => {
     const location = useLocation();
     const routerHistory = useHistory();
     const [waitForAddUpdate, setWaitForAddUpdate] = useState(false);
+    const [showImageInput, setShowImageInput] = useState(false);
+    const coverImgRef: any = useRef();
 
     const {
         books,
@@ -63,6 +67,7 @@ const AddUpdateBook = (props: Props) => {
         [formFields.author]: book?.author || '',
         [formFields.publisher]: book?.publisher || '',
         [formFields.availableStock]: book?.availableStock || '',
+        [formFields.cover]: book?.cover || '',
     };
 
     let mode = '';
@@ -74,6 +79,8 @@ const AddUpdateBook = (props: Props) => {
     const {
         register,
         handleSubmit,
+        setValue,
+        getValues,
         formState: {
             errors,
             touchedFields,
@@ -126,13 +133,10 @@ const AddUpdateBook = (props: Props) => {
     };
 
     if (mode === 'edit' && !book) {
+        // TODO: fix this
         return (
             <p>Book not found</p>
         );
-    }
-
-    if (mode === 'edit') {
-        book['cover'] = 'https://images-na.ssl-images-amazon.com/images/I/5112YFsXIJL.jpg';
     }
 
     return (
@@ -153,9 +157,44 @@ const AddUpdateBook = (props: Props) => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="book-details-head">
                     <div className="book-cover-wrpr pos-rel flex-row flex-justify-center">
-                        <img className="v-al-mdl" src={book?.cover || BOOK_COVER_PLACEHOLDER}/>
-                        <div className="book-cover-btn trans">
+                        <img ref={coverImgRef} className="v-al-mdl" src={book?.cover || BOOK_COVER_PLACEHOLDER}/>
+                        <div
+                            className={`image-input-wrpr flex-column flex-align-items-flex-end ${showImageInput ? 'is-img-inp-open' : ''}`}>
+                            <div className="flex-row flex-align-items-flex-end">
+                                {
+                                    showImageInput &&
+                                    <button
+                                        type="button" className="btn-icon save-img-btn"
+                                        onClick={() => {
+                                            const imgUrl = getValues()[formFields.cover];
+                                            (coverImgRef.current as HTMLImageElement).setAttribute('src', imgUrl);
+                                            setValue(formFields.cover, imgUrl);
+                                            setShowImageInput(false);
+                                        }}
+                                    >
+                                        <CheckIcon/>
+                                    </button>
+                                }
 
+                                <button
+                                    type="button" className="btn-icon edit-img-btn"
+                                    onClick={() => {
+                                        setShowImageInput(!showImageInput);
+                                    }}
+                                >
+                                    {showImageInput ? <CloseIcon/> : <EditIcon/>}
+                                </button>
+                            </div>
+                            {
+                                showImageInput &&
+                                <TextareaField
+                                    placeholder={'Add the url of the image'}
+                                    name={formFields.cover}
+                                    defaultValue={initialValues[formFields.cover]}
+                                    touched={touchedFields[formFields.cover]}
+                                    register={register}
+                                />
+                            }
                         </div>
                     </div>
                     <div className="book-main-details">
