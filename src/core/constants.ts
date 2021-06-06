@@ -36,4 +36,4 @@ export const LOCALSTORAGE_KEYS = {
     books: 'books',
 };
 
-export const BOOK_COVER_PLACEHOLDER = '/placeholder-img.png';
+export const BOOK_COVER_PLACEHOLDER = './placeholder-img.png';

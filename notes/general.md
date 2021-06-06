@@ -44,6 +44,6 @@
 - [x] fix sorting
 - [x] Check in bigger screens
 - [x] Check all TODOs
-- [ ] cleanup and test
+- [x] cleanup and test
 - [ ] Write up a readme
 - [ ] Make a build and test

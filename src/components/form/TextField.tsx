@@ -18,7 +18,6 @@ const TextField = (props: Props) => {
     const {
         register,
         name,
-        touched,
         error,
         label,
         placeholder = '',

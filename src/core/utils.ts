@@ -27,7 +27,7 @@ export function formatInIndianNumeric(value: number): string {
     return otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThreeNumbers;
 }
 
-export function nFormatter(num: number, digits: number) {
+export function nFormatter(num: number, digits: number): string {
     // ref: https://stackoverflow.com/a/9462382/4331993
 
     const lookup = [
