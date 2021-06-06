@@ -50,12 +50,9 @@ const BooksList = (props: Props) => {
     };
 
     const filterBooks = (): void => {
-        const filtered: { [bookId: string]: Book } = {};
-        allBooks.forEach((book) => {
+        const filtered: Book[] = allBooks.filter((book) => {
             const searchable = `${book.name} ${book.description} ${book.author} ${book.publisher}`;
-            if (searchable.toLowerCase().includes(searchTerm.toLowerCase())) {
-                filtered[book.id] = book;
-            }
+            return searchable.toLowerCase().includes(searchTerm.toLowerCase());
         });
         setFilteredBooks(filtered);
     };
