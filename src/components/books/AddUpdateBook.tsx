@@ -139,6 +139,7 @@ const AddUpdateBook = (props: Props) => {
         <div className="m-x-auto book-add-update">
 
             <p className="p7">
+                {/* TODO: fix this */}
                 <Link to={'/'}>&lt; Back</Link>
             </p>
 
@@ -146,7 +147,7 @@ const AddUpdateBook = (props: Props) => {
 
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="book-details-head">
-                    <div className="book-cover-wrpr pos-rel">
+                    <div className="book-cover-wrpr pos-rel flex-row flex-justify-center">
                         <img className="v-al-mdl" src={book?.cover || BOOK_COVER_PLACEHOLDER}/>
                         <div className="book-cover-btn trans">
 

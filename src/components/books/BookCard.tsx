@@ -59,13 +59,13 @@ const BookCard = (props: Props) => {
                 {
                     showMenu &&
                     <div className="menu pos-abs">
-                        <div onClick={handleEditClick} className="menu-item flex-row flex-align-items-center">
+                        <div onClick={handleEditClick} className="menu-item flex-row flex-align-items-center cur-p">
                             <EditIcon/>
                             <span>&nbsp;Edit</span>
                         </div>
                         <div
                             onClick={handleDeleteClick}
-                            className="menu-item flex-row flex-align-items-center delete-item"
+                            className="menu-item flex-row flex-align-items-center delete-item cur-p"
                         >
                             <DeleteIcon/>
                             <span>&nbsp;Delete</span>
