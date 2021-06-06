@@ -7,6 +7,7 @@ import "./../../styles/components/BookDetail.scss";
 import {ChevronDownIcon, ChevronUpIcon, DeleteIcon, EditIcon} from "../icons";
 import {ACTION_TYPES} from "../../core/constants";
 import BackLink from "../BackLink";
+import {getFormattedDate} from "../../core/utils";
 
 
 const mapStateToProps = (state: APP_STATE) => {
@@ -119,13 +120,13 @@ const BookDetail = (props: Props) => {
 
                         <p className="p6 m-0">
                             <span className="txt-clr-gray-1">Added on:&nbsp;</span>
-                            {/* TODO: parse the date */}
-                            <span>{book.addedOn}</span>
+                            <span>{getFormattedDate(book.addedOn)}</span>
                         </p>
                     </div>
                 </div>
             </div>
 
+            {/* other details */}
             <div>
                 <p className="p3">{book.description}</p>
             </div>
