@@ -23,6 +23,13 @@ export const MSGS: {[field: string]: any} = {
         required: 'Required',
         min: 'Minimum available stock should be more than or equal 0',
     },
+    price: {
+        required: 'Required',
+        min: 'Minimum price should be more than or equal 0',
+    },
+    genre: {
+        required: 'Required',
+    },
 };
 
 export const LOCALSTORAGE_KEYS = {

@@ -34,7 +34,7 @@ const BookDetail = (props: Props) => {
         // dispatch,
     } = props;
 
-    const book = books.data.find((b: Book) => b.id === params.id) || null;
+    const book = books.data.find((b: Book) => b.id == params.id) || null;
 
     const handleDropdownClick = (): void => {
         setShowMenu(!showMenu);
