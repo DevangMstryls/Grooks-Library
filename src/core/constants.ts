@@ -29,4 +29,4 @@ export const LOCALSTORAGE_KEYS = {
     books: 'books',
 };
 
-export const BOOK_COVER_PLACEHOLDER = 'https://bookstoreromanceday.org/wp-content/uploads/2020/08/book-cover-placeholder.png';
+export const BOOK_COVER_PLACEHOLDER = '/placeholder-img.png';
