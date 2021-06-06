@@ -13,7 +13,7 @@ Make sure to follow these points :
 1. ✅ Use framework of your choice either angular or react, if using angular use 4+
 2. ✅ Use a state conatainer, flux or redux choice is yours
 3. ✅ Do not use any css framework like material or bootstrap
-4. Make sure your application looks good in mobile, tab and desktop (choose a design of your choice)
+4. ✅ Make sure your application looks good in mobile, tab and desktop (choose a design of your choice)
 5. ✅ Use a build tool of your choice
 6. Don’t spend time in making ui look better, spend time in having proper component based approach
 7. ✅ typescript is preferred over javascript
