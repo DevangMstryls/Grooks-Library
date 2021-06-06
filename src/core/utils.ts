@@ -1,4 +1,6 @@
 export function getFormattedDate(date: Date | string): string {
+    if (!date) return 'Unknown';
+
     const d = new Date(date);
     let formattedDate = '';
     const months = [

@@ -30,7 +30,7 @@ const BooksList = (props: Props) => {
     const routerHistory = useHistory();
 
     const [searchTerm, setSearchTerm] = useState('');
-    const [waitForSearch, setWaitForSearch] = useState(false);
+    // const [waitForSearch, setWaitForSearch] = useState(false);
     const [filteredBooks, setFilteredBooks] = useState({});
 
     const timeoutRef: any = useRef();
@@ -44,11 +44,11 @@ const BooksList = (props: Props) => {
             return;
         }
 
-        setWaitForSearch(true);
+        // setWaitForSearch(true);
         clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(() => {
             filterBooks();
-            setWaitForSearch(false);
+            // setWaitForSearch(false);
         }, 1000);
     };
 
