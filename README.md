@@ -14,8 +14,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - Run `$ npm run build`
 
 #### Serve prod build
-- Install the `serve` package: `$ npm i -g serve`
-- Run `$ npm start`
+- Install the `serve` package: `$ npm install -g serve`
+- Run `$ serve -s build`
 
 
 

@@ -29,7 +29,6 @@
 - [x] Make the search book functionality
     Available Filters:
     - [x] Generic text search through Title, Description, Author, Publisher (text input)
-    - [ ] Available Stock (range/select input)
 - [x] Add styles
 - [x] Make options dropdown
 - [x] Make delete functionality
