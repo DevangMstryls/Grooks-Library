@@ -7,7 +7,7 @@ import "./../../styles/components/BookDetail.scss";
 import {ChevronDownIcon, ChevronUpIcon, DeleteIcon, EditIcon} from "../icons";
 import {ACTION_TYPES} from "../../core/constants";
 import BackLink from "../BackLink";
-import {getFormattedDate} from "../../core/utils";
+import {formatInIndianNumeric, getFormattedDate} from "../../core/utils";
 
 
 const mapStateToProps = (state: APP_STATE) => {
@@ -113,7 +113,11 @@ const BookDetail = (props: Props) => {
                         </p>
                         <p className="p3">
                             <span className="txt-clr-gray-1">Available Stock:&nbsp;</span>
-                            <span>{book.availableStock}</span>
+                            <span>{formatInIndianNumeric(book.availableStock)}</span>
+                        </p>
+                        <p className="p3">
+                            <span className="txt-clr-gray-1">Price:&nbsp;</span>
+                            <span>₹{formatInIndianNumeric(book.price)}</span>
                         </p>
                     </div>
                     <div>

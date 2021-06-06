@@ -14,3 +14,33 @@ export function getFormattedDate(date: Date | string): string {
 
     return formattedDate;
 }
+
+export function formatInIndianNumeric(value: number): string {
+    if (!value) return '--';
+
+    const valueToString = value.toString();
+    let lastThreeNumbers = valueToString.substring(valueToString.length - 3);
+    const otherNumbers = valueToString.substring(0, valueToString.length - 3);
+    if (otherNumbers !== '') {
+        lastThreeNumbers = ',' + lastThreeNumbers;
+    }
+    return otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThreeNumbers;
+}
+
+export function nFormatter(num: number, digits: number) {
+    // ref: https://stackoverflow.com/a/9462382/4331993
+
+    const lookup = [
+        {value: 1e9, symbol: "B"},
+        {value: 1e6, symbol: "M"},
+        {value: 1e3, symbol: "k"},
+        {value: 1, symbol: ""},
+    ];
+    const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
+    const item = lookup.find((d) => num >= d.value);
+    return (
+        item
+            ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol
+            : "0"
+    );
+}

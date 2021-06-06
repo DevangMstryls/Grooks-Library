@@ -5,6 +5,7 @@ import "./../../styles/components/BookCard.scss";
 import {ChevronDownIcon, ChevronUpIcon, DeleteIcon, EditIcon} from "../icons";
 import {useDispatch} from "react-redux";
 import {ACTION_TYPES, BOOK_COVER_PLACEHOLDER} from "../../core/constants";
+import {formatInIndianNumeric, nFormatter} from "../../core/utils";
 
 
 type Props = {
@@ -22,7 +23,7 @@ const BookCard = (props: Props) => {
     } = props;
 
     // TODO: remove these
-    book['price'] = 300;
+    book['price'] = 3020;
 
     const handleOnClick = (e: any): void => {
         if (!e.target.closest('.menu-open-btn') && !e.target.closest('.menu'))
@@ -83,9 +84,9 @@ const BookCard = (props: Props) => {
                         <p className="p4 txt-clr-gray-1">{book.author}</p>
                     </div>
                     <div className="flex-row flex-justify-space-between flex-align-items-center">
-                        <p className="txt-clr-gray-1 p2 m-0">₹&nbsp;{book.price}</p>
+                        <p className="txt-clr-gray-1 p2 m-0">₹&nbsp;{formatInIndianNumeric(book.price)}</p>
                         <p className={`p4 m-0 ${book.availableStock < 10 ? 'txt-clr-error' : 'txt-clr-gray-1'}`}>In
-                            Stock:&nbsp;{book.availableStock}</p>
+                            Stock:&nbsp;{nFormatter(book.availableStock, 2)}</p>
                     </div>
                 </div>
             </div>
