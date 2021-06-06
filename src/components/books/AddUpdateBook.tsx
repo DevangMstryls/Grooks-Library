@@ -50,11 +50,6 @@ const getErrorMessage = (e: FieldError | undefined): string => {
 const AddUpdateBook = (props: Props) => {
 
     const params: any = useParams();
-    const location = useLocation();
-    const routerHistory = useHistory();
-    const [waitForAddUpdate, setWaitForAddUpdate] = useState(false);
-    const [showImageInput, setShowImageInput] = useState(false);
-    const coverImgRef: any = useRef();
 
     const {
         books,
@@ -62,6 +57,12 @@ const AddUpdateBook = (props: Props) => {
     } = props;
 
     const book = books.data[params.id] || null;
+
+    const location = useLocation();
+    const routerHistory = useHistory();
+    const [waitForAddUpdate, setWaitForAddUpdate] = useState(false);
+    const [showImageInput, setShowImageInput] = useState(false);
+    const [coverImg, setCoverImg] = useState(book?.cover || '');
 
     const initialValues = {
         [formFields.name]: book?.name || '',
@@ -98,6 +99,7 @@ const AddUpdateBook = (props: Props) => {
                 ...data,
                 addedOn: new Date().toISOString(),
                 id: Math.floor(Math.random() * 1000),
+                cover: data.cover ?? coverImg,
             };
 
             setTimeout(() => {
@@ -113,6 +115,7 @@ const AddUpdateBook = (props: Props) => {
             const bookToUpdate: Book = {
                 ...data,
                 id: book.id,
+                cover: data.cover ?? coverImg,
             };
 
             setTimeout(() => {
@@ -155,7 +158,7 @@ const AddUpdateBook = (props: Props) => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="book-details-head">
                     <div className="book-cover-wrpr pos-rel flex-row flex-justify-center">
-                        <img ref={coverImgRef} className="v-al-mdl" src={book?.cover || BOOK_COVER_PLACEHOLDER}/>
+                        <img className="v-al-mdl" src={coverImg || BOOK_COVER_PLACEHOLDER}/>
                         <div
                             className={`image-input-wrpr flex-column flex-align-items-flex-end ${showImageInput ? 'is-img-inp-open' : ''}`}>
                             <div className="flex-row flex-align-items-flex-end">
@@ -165,7 +168,7 @@ const AddUpdateBook = (props: Props) => {
                                         type="button" className="btn-icon save-img-btn"
                                         onClick={() => {
                                             const imgUrl = getValues()[formFields.cover];
-                                            (coverImgRef.current as HTMLImageElement).setAttribute('src', imgUrl);
+                                            setCoverImg(imgUrl);
                                             setValue(formFields.cover, imgUrl);
                                             setShowImageInput(false);
                                         }}
