@@ -45,7 +45,7 @@ const TextareaField = (props: Props) => {
             />
             <div className={'pos-rel error-wrpr'}>
                 {
-                    (touched && error) &&
+                    error &&
                     <p className={'pos-abs m-0 txt-clr-error p8'}>{error}</p>
                 }
             </div>

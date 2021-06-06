@@ -94,7 +94,6 @@ const AddUpdateBook = (props: Props) => {
     } = useForm();
 
     const onSubmit = (data: any) => {
-        // TODO: set field as touched
         setWaitForAddUpdate(true);
         if (mode === 'add') {
             const bookToAdd: Book = {

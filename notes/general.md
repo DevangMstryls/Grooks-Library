@@ -40,7 +40,10 @@
 - [x] round the available stock
 - [x] Indian rupee pricing
 - [x] handle the not found states for add/update and book detail page
-- [ ] Check in bigger screens
-- [ ] Add price and genre field
+- [x] Add price and genre field
+- [x] fix sorting
+- [x] Check in bigger screens
+- [x] Check all TODOs
 - [ ] cleanup and test
-
+- [ ] Write up a readme
+- [ ] Make a build and test
