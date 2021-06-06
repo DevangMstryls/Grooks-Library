@@ -12,4 +12,5 @@ export type Book = {
     addedOn: string,
     availableStock: number,
     price: number,
+    genre: string,
 };

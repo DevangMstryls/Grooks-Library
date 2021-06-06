@@ -102,21 +102,24 @@ const BookDetail = (props: Props) => {
                             <span className="txt-clr-gray-1">by&nbsp;</span>
                             <span>{book.author}</span>
                         </p>
-                        <p className="p3">
+                        <p className="p4 m-0 m-t-xs m-b-xs">
                             <span className="txt-clr-gray-1">Published by:&nbsp;</span>
                             <span>{book.publisher}</span>
                         </p>
-                        <p className="p3">
+                        <p className="p4 m-0 m-t-xs m-b-xs">
+                            <span className="txt-clr-gray-1">Genre:&nbsp;</span>
+                            <span>{book.genre}</span>
+                        </p>
+                        <p className="p4 m-0 m-t-xs m-b-xs">
                             <span className="txt-clr-gray-1">Available Stock:&nbsp;</span>
                             <span>{formatInIndianNumeric(book.availableStock)}</span>
                         </p>
-                        <p className="p3">
+                        <p className="p4 m-0 m-t-xs m-b-xs">
                             <span className="txt-clr-gray-1">Price:&nbsp;</span>
                             <span>₹{formatInIndianNumeric(book.price)}</span>
                         </p>
                     </div>
                     <div>
-
                         <p className="p6 m-0">
                             <span className="txt-clr-gray-1">Added on:&nbsp;</span>
                             <span>{getFormattedDate(book.addedOn)}</span>

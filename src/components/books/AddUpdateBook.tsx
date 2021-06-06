@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {useState} from "react";
 import {connect} from "react-redux";
 import {APP_STATE, BooksState} from "../../core/types/stateTypes";
 import {useHistory, useLocation, useParams} from "react-router";
@@ -28,6 +28,7 @@ const formFields = {
     description: 'description',
     author: 'author',
     publisher: 'publisher',
+    genre: 'genre',
     availableStock: 'availableStock',
     cover: 'cover',
     price: 'price',
@@ -72,6 +73,7 @@ const AddUpdateBook = (props: Props) => {
         [formFields.availableStock]: book?.availableStock || '',
         [formFields.cover]: book?.cover || '',
         [formFields.price]: book?.price || '',
+        [formFields.genre]: book?.genre || '',
     };
 
     let mode = '';
@@ -108,7 +110,10 @@ const AddUpdateBook = (props: Props) => {
                     payload: bookToAdd,
                 });
                 setWaitForAddUpdate(false);
-                routerHistory.push('/');
+                if (routerHistory.length > 1)
+                    routerHistory.goBack();
+                else
+                    routerHistory.replace('/');
             }, 1000);
         }
         else if (mode === 'edit') {
@@ -124,7 +129,10 @@ const AddUpdateBook = (props: Props) => {
                     payload: bookToUpdate,
                 });
                 setWaitForAddUpdate(false);
-                routerHistory.push('/');
+                if (routerHistory.length > 1)
+                    routerHistory.goBack();
+                else
+                    routerHistory.replace('/');
             }, 1000);
         }
     };
@@ -147,9 +155,8 @@ const AddUpdateBook = (props: Props) => {
                 onClick={() => {
                     if (routerHistory.length > 1)
                         routerHistory.goBack();
-                    else {
+                    else
                         routerHistory.replace('/');
-                    }
                 }}
             />
 
@@ -272,6 +279,20 @@ const AddUpdateBook = (props: Props) => {
                         defaultValue={initialValues[formFields.publisher]}
                         touched={touchedFields[formFields.publisher]}
                         error={getErrorMessage(errors[formFields.publisher])}
+                        register={register}
+                        rules={{
+                            required: true,
+                        }}
+                    />
+
+                    {/* Genre */}
+                    <TextField
+                        label={'Genre'}
+                        placeholder={'Non-fiction'}
+                        name={formFields.genre}
+                        defaultValue={initialValues[formFields.genre]}
+                        touched={touchedFields[formFields.genre]}
+                        error={getErrorMessage(errors[formFields.genre])}
                         register={register}
                         rules={{
                             required: true,
