@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import BooksList from "./components/books/BooksList";
 import AddUpdateBook from "./components/books/AddUpdateBook";
 import BookDetail from "./components/books/BookDetail";
@@ -10,9 +10,9 @@ import Header from "./components/Header";
 function App() {
     return (
         <div className="App">
-            <div className="page-layout">
-                <Router>
-                    <Header/>
+            <Router>
+                <Header/>
+                <div className="page-layout">
 
                     <Switch>
                         <Route path="/add">
@@ -28,8 +28,8 @@ function App() {
                             <BooksList/>
                         </Route>
                     </Switch>
-                </Router>
-            </div>
+                </div>
+            </Router>
         </div>
     );
 }

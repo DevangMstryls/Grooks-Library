@@ -80,7 +80,7 @@ const BookCard = (props: Props) => {
                 </div>
                 <div className="flex-1 flex-column flex-justify-space-between">
                     <div>
-                        <p className="p2 m-0 m-b-s">{book.name}</p>
+                        <p className="p2 m-0 m-b-s book-name">{book.name}</p>
                         <p className="p4 txt-clr-gray-1">{book.author}</p>
                     </div>
                     <div className="flex-row flex-justify-space-between flex-align-items-center">

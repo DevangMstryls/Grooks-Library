@@ -11,6 +11,7 @@ import {Book} from "../../core/types/types";
 import "./../../styles/components/AddUpdateBook.scss";
 import BackLink from "../BackLink";
 import {CheckIcon, CloseIcon, EditIcon} from "../icons";
+import {BookNotFoundMsg} from "./BookNotFoundMsg";
 
 const mapStateToProps = (state: APP_STATE) => {
     return {
@@ -132,12 +133,7 @@ const AddUpdateBook = (props: Props) => {
             routerHistory.goBack();
     };
 
-    if (mode === 'edit' && !book) {
-        // TODO: fix this
-        return (
-            <p>Book not found</p>
-        );
-    }
+    if (mode === 'edit' && !book) return <BookNotFoundMsg/>;
 
     return (
         <div className="m-x-auto book-add-update">

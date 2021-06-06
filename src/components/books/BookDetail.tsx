@@ -8,6 +8,7 @@ import {ChevronDownIcon, ChevronUpIcon, DeleteIcon, EditIcon} from "../icons";
 import {ACTION_TYPES, BOOK_COVER_PLACEHOLDER} from "../../core/constants";
 import BackLink from "../BackLink";
 import {formatInIndianNumeric, getFormattedDate} from "../../core/utils";
+import {BookNotFoundMsg} from "./BookNotFoundMsg";
 
 
 const mapStateToProps = (state: APP_STATE) => {
@@ -53,11 +54,7 @@ const BookDetail = (props: Props) => {
         }
     };
 
-    if (!book) {
-        return (
-            <p>Book not found</p>
-        );
-    }
+    if (!book) return <BookNotFoundMsg/>;
 
     return (
         <div className="m-x-auto book-detail">
