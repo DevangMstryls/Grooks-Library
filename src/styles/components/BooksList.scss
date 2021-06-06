@@ -30,7 +30,7 @@
   bottom: 30px;
   right: 30px;
   background: $color-accent;
-  box-shadow: $box-shadow-1;
+  box-shadow: $box-shadow-3;
 
   svg {
     fill: $color-white;;
@@ -38,6 +38,7 @@
 
   &:hover {
     background: $color-accent-dark;
+    box-shadow: $box-shadow-2;
   }
 }
 

@@ -50,7 +50,7 @@ const BookCard = (props: Props) => {
     };
 
     return (
-        <div className="book-card" onClick={handleOnClick}>
+        <div className="book-card trans" onClick={handleOnClick}>
             <div className="pos-rel">
                 <button className="btn-icon menu-open-btn pos-abs" onClick={handleDropdownClick}>
                     {showMenu ? <ChevronUpIcon/> : <ChevronDownIcon/>}

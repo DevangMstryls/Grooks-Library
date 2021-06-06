@@ -129,7 +129,7 @@ const BooksList = (props: Props) => {
 
             {/* add button */}
             <button
-                className="btn-icon add-book-btn"
+                className="btn-icon add-book-btn trans"
                 onClick={() => {
                     routerHistory.push('/add');
                 }}
