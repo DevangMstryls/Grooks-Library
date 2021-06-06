@@ -5,7 +5,7 @@ import {useParams} from "react-router";
 import {useHistory} from "react-router-dom";
 import "./../../styles/components/BookDetail.scss";
 import {ChevronDownIcon, ChevronUpIcon, DeleteIcon, EditIcon} from "../icons";
-import {ACTION_TYPES} from "../../core/constants";
+import {ACTION_TYPES, BOOK_COVER_PLACEHOLDER} from "../../core/constants";
 import BackLink from "../BackLink";
 import {formatInIndianNumeric, getFormattedDate} from "../../core/utils";
 
@@ -95,9 +95,7 @@ const BookDetail = (props: Props) => {
                 }
 
                 <div className="book-cover-wrpr flex-row flex-justify-center">
-                    <img
-                        className="v-al-mdl"
-                        src={'https://images-na.ssl-images-amazon.com/images/I/5112YFsXIJL.jpg'}/>
+                    <img className="v-al-mdl" src={book?.cover || BOOK_COVER_PLACEHOLDER}/>
                 </div>
                 <div className="book-main-details flex-column flex-justify-space-between">
                     <div>
@@ -132,7 +130,8 @@ const BookDetail = (props: Props) => {
 
             {/* other details */}
             <div>
-                <p className="p3">{book.description}</p>
+                <p className="p3 txt-clr-gray-1">About the Book</p>
+                <p className="p4">{book.description}</p>
             </div>
         </div>
     );
