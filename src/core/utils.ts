@@ -44,3 +44,16 @@ export function nFormatter(num: number, digits: number) {
             : "0"
     );
 }
+
+export function by(key: string, order: 'asc' | 'desc' = 'desc') {
+    if (order === 'asc') {
+        return (a: any, b: any) => {
+            return new Date(a[key]).getTime() - new Date(b[key]).getTime();
+        };
+    }
+
+    // default sort is in desc
+    return (a: any, b: any) => {
+        return new Date(b[key]).getTime() - new Date(a[key]).getTime();
+    };
+}

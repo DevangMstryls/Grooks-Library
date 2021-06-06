@@ -6,6 +6,7 @@ import {Book} from "../../core/types/types";
 import "./../../styles/components/BooksList.scss";
 import {AddIcon, BookIcon} from "../icons";
 import {useHistory} from "react-router";
+import {by} from "../../core/utils";
 
 
 const mapStateToProps = (state: APP_STATE) => {
@@ -35,14 +36,6 @@ const BooksList = (props: Props) => {
 
     const booksAdded = !!allBooks.length;
 
-    const sortAllBooks = () => {
-        return allBooks.sort((a, b) => {
-            return new Date(a.addedOn).getTime() - new Date(b.addedOn).getTime();
-        });
-    };
-
-    const sortedAllBooks = sortAllBooks();
-
     const filtersApplied = (): boolean => {
         return searchTerm.trim() !== '';
     };
@@ -58,13 +51,18 @@ const BooksList = (props: Props) => {
 
     const filterBooks = (): void => {
         const filtered: { [bookId: string]: Book } = {};
-        sortedAllBooks.forEach((book) => {
+        allBooks.forEach((book) => {
             const searchable = `${book.name} ${book.description} ${book.author} ${book.publisher}`;
             if (searchable.toLowerCase().includes(searchTerm.toLowerCase())) {
                 filtered[book.id] = book;
             }
         });
         setFilteredBooks(filtered);
+    };
+
+    const getBooksList = () => {
+        const feed = filtersApplied() ? filteredBooks : allBooks;
+        return feed.sort(by('addedOn'));
     };
 
     useEffect(() => {
@@ -108,7 +106,7 @@ const BooksList = (props: Props) => {
                         {/* books feed */}
                         <div className="books-feed">
                             {
-                                (filtersApplied() ? filteredBooks : sortedAllBooks).map((book: Book) => {
+                                getBooksList().map((book: Book) => {
                                     return (
                                         <BookCard key={book.id} book={book}/>
                                     );
