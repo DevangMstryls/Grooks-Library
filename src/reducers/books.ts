@@ -35,7 +35,7 @@ export function booksReducer(state = INITIAL_STATE.books, action: Action): Books
             const newData = [...state.data];
             const i = newData.findIndex((b) => b.id === payload.id);
             if (i !== -1)
-                delete newData[i];
+                newData.splice(i, 1);
 
             return {
                 ...state,

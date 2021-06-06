@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {APP_STATE, BooksState} from "../../core/types/stateTypes";
-import {connect, useDispatch} from "react-redux";
+import {connect} from "react-redux";
 import {useParams} from "react-router";
 import {useHistory} from "react-router-dom";
 import "./../../styles/components/BookDetail.scss";
@@ -27,11 +27,10 @@ const BookDetail = (props: Props) => {
     const params: any = useParams();
     const routerHistory = useHistory();
     const [showMenu, setShowMenu] = useState(false);
-    const dispatch = useDispatch();
 
     const {
         books,
-        // dispatch,
+        dispatch,
     } = props;
 
     const book = books.data.find((b: Book) => b.id == params.id) || null;
@@ -52,6 +51,11 @@ const BookDetail = (props: Props) => {
                     id: book.id,
                 },
             });
+
+            if (routerHistory.length > 1)
+                routerHistory.goBack();
+            else
+                routerHistory.push('/');
         }
     };
 
@@ -64,9 +68,8 @@ const BookDetail = (props: Props) => {
                 onClick={() => {
                     if (routerHistory.length > 1)
                         routerHistory.goBack();
-                    else {
+                    else
                         routerHistory.push('/');
-                    }
                 }}
             />
 
