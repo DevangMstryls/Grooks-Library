@@ -10,10 +10,9 @@ import Header from "./components/Header";
 function App() {
     return (
         <div className="App">
-            <Header/>
             <div className="page-layout">
                 <Router>
-                    {/*<Link to="/add">Add Book</Link>*/}
+                    <Header/>
 
                     <Switch>
                         <Route path="/add">
