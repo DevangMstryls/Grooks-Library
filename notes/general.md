@@ -45,5 +45,5 @@
 - [x] Check in bigger screens
 - [x] Check all TODOs
 - [x] cleanup and test
-- [ ] Write up a readme
-- [ ] Make a build and test
+- [x] Write up a readme
+- [x] Make a build and test

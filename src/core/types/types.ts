@@ -4,7 +4,7 @@ export type Action = {
 };
 
 export type Book = {
-    id: string,
+    id: string | number,
     name: string,
     description: string,
     author: string,
@@ -13,4 +13,5 @@ export type Book = {
     availableStock: number,
     price: number,
     genre: string,
+    cover: string,
 };
